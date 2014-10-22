@@ -15,7 +15,13 @@ The invitation from the editors looked like this:
 > 
 > Please include Prof. Desiderio in all your email correspondence.
 
-Author instructions can be found [here](http://bit.ly/1FB1Iws). Currently there is no info on page limits.
+Author instructions can be found [here](http://bit.ly/1FB1Iws). 
+Currently there is no page limit, here is what the editor said:
+
+> We have no firm page limit. Rather, authors can check online for previous
+> manuscripts to see the page range.
+> We trust that authors will self-regulate the size of manuscripts.
+
 
 Todo list:
 * Write an introduction
