@@ -23,6 +23,6 @@ Todo list:
 * Can we insert more figures from the thesis?
 * Add text about our own methods (elude, GradientOptimizer and insilicoamt)
 * A discussion speculating on the future of rt-prediction:
-** targeted -> more use of rt
-** DIA
-** deep-learning?
+  * targeted -> more use of rt
+  * DIA
+  * deep-learning?
