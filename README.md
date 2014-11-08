@@ -25,6 +25,7 @@ Currently there is no page limit, here is what the editor said:
 
 Todo list:
 * Write an introduction
+  -- Wrote an embryo, we should polish it though
 * Try to expand on the text
 * Can we insert more figures from the thesis?
 * Add text about our own methods (elude, GradientOptimizer and insilicoamt)
