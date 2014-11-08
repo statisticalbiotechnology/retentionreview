@@ -1,6 +1,8 @@
 \documentclass[a4paper]{article}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{url}
+\usepackage{multirow}
 
 \title{Peptide retention time prediction} 
 
@@ -67,15 +69,6 @@ briefly introduces the use of peptide retention standards.
 
 \section{\label{sec:rtpred}Retention time prediction for unmodified peptides}
 
-\begin{wrapfigure}{r}{.45\textwidth}
-\vspace{-10pt}
-%\begin{figure}[htbp]
-\centering
-\includegraphics[trim=0.5cm 0cm 2cm 1.5cm, clip=true, width=0.43\textwidth]{img/reproducibility.pdf}
-\caption{\label{fig:repr} {\bf Reproducibility of peptide retention time.} Two identical shotgun proteomics experiments were carried out. The retention times of the peptides confidently identified in both runs are displayed.}
-%\end{figure}
-\vspace{-12pt}
-\end{wrapfigure}
 
 Liquid chromatography gives reproducible results. Except for small
 shifts from run to run, the same peptide elutes at about the same time
@@ -88,13 +81,23 @@ a large extent by their amino-acid sequence. As a consequence, given a
 chromatography setup, the sequence of a peptide should provide
 virtually all the information needed to predict its retention time.
 
-\vspace{0.15cm}
+\begin{wrapfigure}{r}{.45\textwidth}
+\vspace{-10pt}
+%\begin{figure}[htbp]
+\centering
+\includegraphics[trim=0.5cm 0cm 2cm 1.5cm, clip=true, width=0.43\textwidth]{img/reproducibility.pdf}
+\caption{\label{fig:repr} {\bf Reproducibility of peptide retention time.} Two identical shotgun proteomics experiments were carried out. The retention times of the peptides confidently identified in both runs are displayed.}
+%\end{figure}
+\vspace{-12pt}
+\end{wrapfigure}
+
 
 Following these observations, a variety of retention time prediction
 methods has been proposed. These methods can be roughly divided into
 three classes: index-based methods, modeling-based techniques and
 machine learning approaches. The main ideas underlying each category
-are described below.
+are described below, while Table \ref{tab:rtmethods} lists a few of the most popular retention time 
+prediction methods from each category.
 
 \subsection{Index-based methods}
 \hyphenation{lear-ning}
@@ -265,6 +268,21 @@ little as 50 peptides for training.
 
 \vspace{0.15cm}
 
+In our group we developed a software package which we named {\sc
+Elude} \cite{elude1, elude2}. One of the main novelty
+points of {\sc Elude} is the calculation of peptide features based on
+both a general hydrophobicity index, as well as a retention index
+trained for each dataset at hand. This ensures that the algorithm
+can be applied to different chromatography setups with minimal loss
+in performance. For cases when little training data is available,
+{\sc ELUDE} implements an additional workflow based on a library of
+pre-trained retention models. This workflow requires only a few tens
+of training peptides to select and calibrate the most suitable model
+from the library. Both the selection and calibration are performed
+using statistical methods robust to outliers.
+
+\vspace{0.15cm}
+
 However, despite all these efforts, it should be pointed out that none
 of the retention time prediction methods currently available is able
 to provide accuracies comparable to the small shifts observed when
@@ -275,6 +293,26 @@ of the main causes of prediction errors \cite{Reimer2012}.  Most
 probably additional factors are involved, and further endeavors are
 required to reach the desired level of accuracy.
 
+\begin{table}
+ \caption{{\bf Retention time prediction methods.} We
+   give a few of the most commonly used retention time prediction methods available.}
+ \vspace{.2cm}
+ \label{tab:rtmethods}
+ \begin{tabular}{lll}
+
+ Method name & Link & Reference  \\
+ \hline
+SSRCalc & \url{http://hs2.proteome.ca/SSRCalc/SSRCalcX.html} & [\cite{Krokhin2004}, \cite{Krokhin2006}, \cite{Spicer2007}] \\
+BioLCCC & \url{http://theorchromo.ru/} & [\cite{gorshkov2006}] \\
+ANN & Link? & [\cite{petritis2003}, \cite{petritis2006improved}] \\
+RTModel, RTPredict &  \url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
+ & [\cite{rtpredict}, \cite{rtpredictImproved}] \\
+&\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \\
+
+Elude & \url{http://elude.sbc.su.se/} & [\cite{elude1}, \cite{elude2}] \\
+\hline
+ \end{tabular} \\
+\end{table}
 
 \section{\label{sec:rtpredm}Retention time prediction for modified peptides}
 
