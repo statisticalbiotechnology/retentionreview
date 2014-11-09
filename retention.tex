@@ -1,4 +1,5 @@
 \documentclass[a4paper]{article}
+\usepackage[margin=0.5in]{geometry} 
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{url}
@@ -38,17 +39,23 @@ proteins in biological samples \cite{Geiger2012} to determining
 posttranslational modifications \cite{Huttlin2010} and elucidating
 protein interaction networks \cite{Gavin2011}. 
 
-Although available in a variety of flavours, most of the widely spread MS-based workflows consists of a few common steps. First, the proteins in the mixture of interest are cleaved into peptides using a sequence-specific enzyme such as trypsin. This step is necessary because the mass spectrometers are more sensitive for peptides, and because spectra produced by full-length proteins are difficult to interpret. In the next step, the resulting peptides are separated according to their hydrophobicity on a liquid chromatography (LC) column. As they gradually elute from the column, the peptides are ionized via electrospray ionization and subjected to mass spectrometry analysis. The result of these measurements consists of a set of spectra, which are subsequently used to infer valuable information about the proteins present in the initial sample.
+\vspace{0.15cm}
 
-Today a majority of the mass spectrometry (MS) protocols in use are high-throughput, generating extensive amounts of data. This has brought up a whole new set of analytical challenges, making the development of efficient algorithms to manipulate and interpret the data a major area of proteomics research. A particular difficult challenge in this context is posed by the tremendous complexity of the data. Proteins
+Although available in a variety of flavours, most of the widely spread MS-based workflows consists of the same main steps. First, the proteins in the mixture of interest are cleaved into peptides using a sequence-specific enzyme such as trypsin. This step is necessary because the mass spectrometers are more sensitive for peptides, and because spectra produced by full-length proteins are difficult to interpret. In the next step, the resulting peptides are separated according to their hydrophobicity on a liquid chromatography (LC) column. As they gradually elute from the column, the peptides are ionized via electrospray ionization and subjected to mass spectrometry analysis. The result of these measurements consists of a set of spectra, which are subsequently used to infer valuable information about the proteins present in the initial sample.
+
+\vspace{0.15cm}
+
+Today a majority of the mass spectrometry (MS) protocols in use are high-throughput, generating extensive amounts of data. This has brought up a whole new set of analytical challenges, making the development of efficient algorithms to interpret this data a major area of proteomics research. A particular difficult challenge in this context is posed by the tremendous complexity of the data. Proteins
 display a wide range of physico-chemical properties and are often found at very different amounts in complex samples, spanning as much as 12 orders of magnitude in relative
 abundance~\cite{Angel2012}. Furthermore, a large proportion of
 proteins are subjected to posttranslational modifications. As an
 example, a few years ago more than 25,000 phosphorylation sites on
 human proteins were already reported~\cite{Lemeer2009}. To manage this formidable diversity,
- increasing efforts are made to extract useful information not only from the spectra, but also from other types of information recorded during MS experiments. 
+ increasing efforts are made to extract useful information not only from the spectra, but also from other types of information recorded during MS experiments. An example of such information is retention time, i.e. the time point when a peptide elutes from the liquid chromatography column. 
 
-An example of such information is retention time, i.e. the time point when a peptide elutes from the liquid chromatography column. Although the main purpose of liquid chromatography is to reduce the number of peptides
+\vspace{0.15cm}
+
+The main purpose of liquid chromatography is to reduce the number of peptides
 simultaneously injected into the mass spectrometer, and by this
 increase the proteome coverage achieved in an experiment. However, besides this, the separation process in itself provides
 useful information about the analytes. On the one hand, the instrument
@@ -58,6 +65,8 @@ can also be estimated by examining the sequence of the peptide. The
 availability of both predicted and observed retention times has proven
 to be a powerful feature, with several applications in mass
 spectrometry-based proteomics \cite{Palmblad2013}.  
+
+\vspace{0.15cm}
 
 In this review we summarize the work done in the field of retention time prediction, and describe a few of the successful applications of such predictions. 
 Sections~\ref{sec:rtpred} and \ref{sec:rtpredm} describe the main
@@ -88,9 +97,10 @@ virtually all the information needed to predict its retention time.
 \includegraphics[trim=0.5cm 0cm 2cm 1.5cm, clip=true, width=0.43\textwidth]{img/reproducibility.pdf}
 \caption{\label{fig:repr} {\bf Reproducibility of peptide retention time.} Two identical shotgun proteomics experiments were carried out. The retention times of the peptides confidently identified in both runs are displayed.}
 %\end{figure}
-\vspace{-12pt}
+\vspace{-25pt}
 \end{wrapfigure}
 
+\vspace{0.15cm}
 
 Following these observations, a variety of retention time prediction
 methods has been proposed. These methods can be roughly divided into
@@ -127,6 +137,28 @@ sequence. However, since shuffled versions of the same peptide
 sequence had previously been separated on a RPLC column, the author
 pointed out that additional parameters would be required for
 predicting the retention time of longer peptides.
+
+
+\begin{table}
+ \caption{{\bf Retention time prediction methods.} We
+   give a few of the most commonly used retention time prediction methods available.}
+ \vspace{.2cm}
+ \label{tab:rtmethods}
+ \begin{tabular}{lll}
+
+ Method name & Link & References  \\
+ \hline
+SSRCalc & \url{http://hs2.proteome.ca/SSRCalc/SSRCalcX.html} & \cite{Krokhin2004, Krokhin2006}, \cite{Spicer2007} \\
+BioLCCC & \url{http://theorchromo.ru/} & \cite{gorshkov2006} \\
+ANN & Link? & \cite{petritis2003 ,petritis2006improved} \\
+RTModel, RTPredict &  \url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
+ & \cite{rtpredict, rtpredictImproved} \\
+&\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \\
+
+Elude & \url{http://elude.sbc.su.se/} & \cite{elude1, elude2} \\
+\hline
+ \end{tabular} \\
+\end{table}
 
 %The study reported good correlations between predicted and observed
 %retention times, showing that for short peptides the amino acid
@@ -257,7 +289,7 @@ Klammer et al. proposed a predictor based on support vector machines
 training peptides and could thus be easily adapted to new
 chromatographic conditions, but yielded lower prediction
 accuracies. Subsequently, a more elaborate SVM-based method using a
-customized kernel function was proposed \cite{rtpredictImproved}. This
+customized kernel function was proposed \cite{rtpredict, rtpredictImproved}. This
 approach provided reasonable prediction accuracy, while requiring as
 little as 50 peptides for training.
 
@@ -268,17 +300,17 @@ little as 50 peptides for training.
 
 \vspace{0.15cm}
 
-In our group we developed a software package which we named {\sc
+In our group we developed a software package for retention time prediction which we named {\sc
 Elude} \cite{elude1, elude2}. One of the main novelty
-points of {\sc Elude} is the calculation of peptide features based on
+points of {\sc Elude} wass the calculation of peptide features based on
 both a general hydrophobicity index, as well as a retention index
-trained for each dataset at hand. This ensures that the algorithm
-can be applied to different chromatography setups with minimal loss
-in performance. For cases when little training data is available,
-{\sc ELUDE} implements an additional workflow based on a library of
-pre-trained retention models. This workflow requires only a few tens
+trained for each dataset at hand. This ensured that the algorithm
+could be applied to different chromatography setups with minimal loss
+in performance. For cases when little training data was available,
+{\sc ELUDE} implemented an additional workflow based on a library of
+pre-trained retention models. This workflow required only a few tens
 of training peptides to select and calibrate the most suitable model
-from the library. Both the selection and calibration are performed
+from the library. Both the selection and calibration were performed
 using statistical methods robust to outliers.
 
 \vspace{0.15cm}
@@ -292,27 +324,6 @@ representations for secondary structure elements was indicated as one
 of the main causes of prediction errors \cite{Reimer2012}.  Most
 probably additional factors are involved, and further endeavors are
 required to reach the desired level of accuracy.
-
-\begin{table}
- \caption{{\bf Retention time prediction methods.} We
-   give a few of the most commonly used retention time prediction methods available.}
- \vspace{.2cm}
- \label{tab:rtmethods}
- \begin{tabular}{lll}
-
- Method name & Link & Reference  \\
- \hline
-SSRCalc & \url{http://hs2.proteome.ca/SSRCalc/SSRCalcX.html} & [\cite{Krokhin2004}, \cite{Krokhin2006}, \cite{Spicer2007}] \\
-BioLCCC & \url{http://theorchromo.ru/} & [\cite{gorshkov2006}] \\
-ANN & Link? & [\cite{petritis2003}, \cite{petritis2006improved}] \\
-RTModel, RTPredict &  \url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
- & [\cite{rtpredict}, \cite{rtpredictImproved}] \\
-&\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \\
-
-Elude & \url{http://elude.sbc.su.se/} & [\cite{elude1}, \cite{elude2}] \\
-\hline
- \end{tabular} \\
-\end{table}
 
 \section{\label{sec:rtpredm}Retention time prediction for modified peptides}
 
@@ -330,6 +341,19 @@ prediction methods have been extended and assessed for such
 peptides. A majority of the approaches currently available are
 modification-specific, many of them developed specifically for
 phosphopeptides \cite{Kawakami2005, perlova2010}.
+
+\begin{figure}[!h]
+\centering 
+\includegraphics[width=0.9\textwidth]{img/elude-ptm.pdf}
+\caption{\label{fig:elude} {\bf {\sc Elude}'s workflow.}  {\sc Elude} encompasses two learning steps. In the first one the training peptides are used to build an in-house retention index. This index, together with additional information, is then employed to calculate a set of 60 numerical features for each peptide. These features are optimally combined during a second training procedure. The resulting retention model can be subsequently used to predict the retention time of other peptides of interest.}
+\end{figure}
+
+\vspace{0.15cm}
+
+To address this, in our group we extended the first version of our algorithm {\sc ELUDE} to encompass modified peptides as well. This was straightforward to achieve once we observed that the in-house trained  retention index contained nearly all the information incorporated in the more general hydrophobicity scale. This meant that we could remove all the features based on this index with minimal loss in accuracy. Further, we redefined all features describing a peptide in terms of the in-house retention index alone. Since this index was trained for each dataset at hand, the algorithm became fully trainable for any modified amino acid (Figure \ref{fig:elude}). We evaluated the new version of {\sc ELUDE} on peptides containing artifactual modifications introduced as part of a MS protocol called COmbined
+FRActional DIagonal Chromatography (COFRADIC) \cite{Gevaert2002}. Our results showed that  {\sc ELUDE} yielded equally accurate predictions for modified and
+unmodified peptides  \cite{elude2}.
+
 
 \vspace{0.15cm}
 
