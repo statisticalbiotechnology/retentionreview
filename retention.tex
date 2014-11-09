@@ -350,7 +350,7 @@ phosphopeptides \cite{Kawakami2005, perlova2010}.
 
 \vspace{0.15cm}
 
-To address this, in our group we extended the first version of our algorithm {\sc ELUDE} to encompass modified peptides as well. This was straightforward to achieve once we observed that the in-house trained  retention index contained nearly all the information incorporated in the more general hydrophobicity scale. This meant that we could remove all the features based on this index with minimal loss in accuracy. Further, we redefined all features describing a peptide in terms of the in-house retention index alone. Since this index was trained for each dataset at hand, the algorithm became fully trainable for any modified amino acid (Figure \ref{fig:elude}). We evaluated the new version of {\sc ELUDE} on peptides containing artifactual modifications introduced as part of a MS protocol called COmbined
+To address this, in our group we extended the first version of our algorithm {\sc ELUDE} to encompass modified peptides as well. This was straightforward to achieve once we observed that the in-house trained  retention index contained nearly all the information incorporated in the more general hydrophobicity scale. This meant that we could remove all the features based on this index with minimal loss in accuracy. Further, we redefined all features describing a peptide in terms of the in-house retention index alone. Since this index was trained for each dataset at hand, the algorithm became fully trainable for any modified amino acid (Figure \ref{fig:elude}). We evaluated the new version of {\sc ELUDE} on peptides containing artifactual modifications introduced as part of an MS protocol called COmbined
 FRActional DIagonal Chromatography (COFRADIC) \cite{Gevaert2002}. Our results showed that  {\sc ELUDE} yielded equally accurate predictions for modified and
 unmodified peptides  \cite{elude2}.
 
@@ -358,7 +358,7 @@ unmodified peptides  \cite{elude2}.
 \vspace{0.15cm}
 
 As large-scale studies of a variety of posttranslational modifications
-increasingly come within reach (Section \ref{sec:ptms}), predictors
+increasingly come within reach, predictors
 handling other modifications will become available. In this context,
 machine learning methods are expected to play an important role
 because of their flexibility and intrinsic ability to adapt to new
@@ -405,14 +405,56 @@ for identifying a set of proteins.
 \vspace{0.15cm}
 
 % Improve the design of SRM experiments 
-In addition, predicted retention times can also be used to investigate
-the elution properties of the peptides, and possibly design improved
-experimental setups. As an example, Bertsch et al. employed retention
-time predictions to design {\em de novo} targeted proteomic
-assays \cite{bertsch2010}. Other applications include decreasing the
+In addition, predicted retention times are useful investigating
+the elution properties of the peptides.  To illustrate this, we predicted the retention time of all the
+theoretical peptides from an {\it in silico} digest of the human
+proteome using  {\sc ELUDE}  \cite{elude1}. This exercise revealed a rather skewed
+distribution, with a majority of the peptides eluting in only a small
+portion of the chromatography run. This suggested that
+the linear gradient typically used in liquid chromatography are sub-optimal, and that one should be able to replace such gradients with nonlinear functions that produce even
+distributions of the peptides across runs.
+
+
+\vspace{0.15cm}
+
+We tested this hypothesis by calculating and evaluating
+two types of nonlinear gradients \cite{gradopt1}. Our results showed that the new
+gradients not only provided more uniform distributions of the
+peptides, but also led to an increase in the number of peptide
+identifications. In addition, they facilitated the identification of
+different peptide species compared to the typical linear gradients. To allow the easy calculation of nonlinear gradients by any MS practitioner, we also implemented a user-friendly graphical user interface that can be downloaded free of cost \cite{gradopt2}. 
+Seen from a general perspective, this showed that the gradient function is yet another parameter that researchers can alter
+in their experiments, opening up a whole new range of potential
+applications. 
+
+
+\vspace{0.15cm}
+
+Other examples of applications of retention time predictions include the optimization of  {\em de novo} targeted proteomic
+assays \cite{bertsch2010}, as well as decreasing the
 number of candidate peptides during database
-searching \cite{lobas2013} and simulations of MS-based
+searching \cite{lobas2013} and accurate simulations of MS-based
 experiments \cite{bielow2011}.
+
+
+%\begin{figure}[!h]
+%\centering 
+%\includegraphics[width=0.8\textwidth]{grad.pdf}
+%\caption{\label{fig:svm} {\bf Workflow to calculate nonlinear gradients.} We calculated two types of nonlinear gradients: one that evens out the predicted distribution of the peptides from an {\it in silico} digest of the proteome, and one that uniformizes the distribution of the abundant MS1-ions.}
+%\end{figure}
+
+\vspace{0.15cm}
+
+% what is the idea 
+%In Paper IV we tested this hypothesis by calculating and evaluating
+%two types of nonlinear gradients. Our results showed that the new
+%gradients not only provided more uniform distributions of the
+%peptides, but also led to an increase in the number of peptide
+%identifications. In addition, they facilitated the identification of
+%different peptide species compared to the typical linear gradients.
+%The project was carried out in collaboration with the Mechtler group
+%at the Research Institute of Molecular Pathology, Vienna.
+
 
 
 % It is an orthogonal information. Decrease the database search space,
