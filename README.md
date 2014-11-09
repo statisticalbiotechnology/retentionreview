@@ -24,11 +24,10 @@ Currently there is no page limit, here is what the editor said:
 
 
 Todo list:
-* Write an introduction
-  -- Wrote an embryo, we should polish it though
-* Try to expand on the text
-* Can we insert more figures from the thesis?
-* Add text about our own methods (elude, GradientOptimizer and insilicoamt)
+* Go through the introduction - add citations and polish the text 
+* Go through the text, do we need to expand it more? If yes, where?
+* Go through the last year's literature and add if needed additional works
+* Decide upon where we can insert more figures, and which these figures should be 
 * A discussion speculating on the future of rt-prediction:
   * targeted -> more use of rt
   * DIA
