@@ -394,6 +394,42 @@ identifications \cite{klammer2007improving}.
 
 \vspace{0.15cm}
 
+In our group we have also investigated the possibility to use predicted retention times to increase the throughput of proteomics experiments. Our starting point was the observation that in typical shotgun proteomics experiments only a small fraction of the detected ions is
+fragmented, and thus used to identify
+peptides. The remaining unfragmented ions are usually disregarded in
+the subsequent data analyses. In the light of these observations, we investigated whether we could use
+information encapsulated by unfragmented ions to improve the protein
+inference in shotgun proteomics \cite{mf}.
+
+\vspace{0.15cm}
+
+% how it works and main results
+More specifically, we matched observed masses and retention times of
+unfragmented ions to predicted masses and retention times for the
+theoretical peptides from an {\it in silico} digest. We built a
+statistical framework to assign protein probabilities based on these
+matches, and combined the results with the ones obtained by the
+typical workflow based on fragmented ions. Following this approach, we
+obtained up to 7\% more protein identifications at a fixed false
+discovery rate threshold of 1\% \cite{mf}.
+
+\vspace{0.15cm}
+
+The idea of identifying proteins based on entire peptides, rather than
+peptide fragments, is not new. In fact, this was the principle
+underlying peptide mass fingerprinting, one of the first methods used
+to identify proteins via mass spectrometry. However, when introduced
+in the 90's, mass fingerprinting could not be applied to unequivocally
+identify proteins in complex biological samples. Consequently, shotgun
+proteomics has gained popularity instead. Nevertheless, with great
+developments in instrumentation leading to sub-ppm mass accuracies,
+the possibility of using mass fingerprinting-like methods came back to
+attention~\cite{iamt1}. Our study showed how improved mass accuracies
+and retention time predictions enable the use of unfragmented ions
+even in the context of complex peptide mixtures. 
+
+\vspace{0.15cm}
+
 Krokhin et al. illustrated yet another route to employ retention time
 predictions \cite{krokhin200612, McQueen2012}. They showed that
 theoretical retention times and mass measurements can be used to
@@ -442,20 +478,6 @@ experiments \cite{bielow2011}.
 %\includegraphics[width=0.8\textwidth]{grad.pdf}
 %\caption{\label{fig:svm} {\bf Workflow to calculate nonlinear gradients.} We calculated two types of nonlinear gradients: one that evens out the predicted distribution of the peptides from an {\it in silico} digest of the proteome, and one that uniformizes the distribution of the abundant MS1-ions.}
 %\end{figure}
-
-\vspace{0.15cm}
-
-% what is the idea 
-%In Paper IV we tested this hypothesis by calculating and evaluating
-%two types of nonlinear gradients. Our results showed that the new
-%gradients not only provided more uniform distributions of the
-%peptides, but also led to an increase in the number of peptide
-%identifications. In addition, they facilitated the identification of
-%different peptide species compared to the typical linear gradients.
-%The project was carried out in collaboration with the Mechtler group
-%at the Research Institute of Molecular Pathology, Vienna.
-
-
 
 % It is an orthogonal information. Decrease the database search space,
 % study properties of the peptides
