@@ -130,9 +130,9 @@ Following these observations, a variety of retention time prediction
 methods has been proposed. Most naturally one could 
 
 
-These methods can be roughly divided into four classes: index-based
-methods, modeling-based techniques, machine learning approaches and
-look-up tables-based approaches. The main ideas underlying each
+These methods can be roughly divided into four classes: look-up
+tables-based approaches, index-based methods, modeling-based methods
+and machine learning techniques. The main ideas underlying each
 category are described below, while Table \ref{tab:rtmethods} lists a
 few of the most popular retention time prediction methods from each
 category.
@@ -140,9 +140,9 @@ category.
 \subsection{Methods based on look-ups of previous registered retention times}
 
 These methods involve keeping a database of previously observed
-retention times for a set of peptides, and use these values as a basis
-for retention time predictions. In particular, in the past years the
-use of retention standards has become increasingly
+retention times for a set of peptides, and subsequently use these
+values as a basis for retention time predictions. In particular, in
+the past years the use of retention standards has become increasingly
 widespread \cite{olegstd, irt}. Such standards typically consist of a
 small number of peptides covering a wide span of hydrophobicities and
 with well studied behaviors under LC-MS/MS. These peptides are often
@@ -176,8 +176,6 @@ coefficients forms a retention index. Once a retention index is
 derived for a given chromatography system, the retention time of a
 peptide can be estimated by simply summing up the retention
 coefficients of the constituent amino acids.
-
-
 
 % The first method 
 The first method to implement this idea used a set of 25 short
@@ -244,8 +242,8 @@ peptides \cite{Browne1982, Guo1987, Gilar2010}.
 
 % SSRcalc was proposed including a number of additional terms; then it was extended
 % for a few other column
-Following these observations, Krokhin et al. developed
-SSRCalc \cite{Krokhin2004}, which is currently the most widely used
+Following these observations, Krokhin et al. developed SSRCalc
+\cite{Krokhin2004}, which is currently the most widely used
 index-based retention time predictor. In the initial version of the
 algorithm a collection of 346 tryptic peptides was used to derive two
 sets of retention coefficients, one corresponding to the N-terminal
@@ -254,11 +252,16 @@ correction factors for peptide length and overall hydrophobicity were
 included. Subsequent versions of the algorithm included terms
 accounting for additional properties such as isoelectric point,
 nearest-neighbor effects of charged peptides and propensity to form
-helical structures \cite{Krokhin2006}. However, a limitation of the
-approach is that the algorithm was optimized for predicting retention
-times for certain chromatography setups. Thus, SSRCalc's prediction
-ability deteriorates for experimental conditions diverging from the
-setup on which the algorithm was optimized \cite{Spicer2007}.
+helical structures \cite{Krokhin2006}. Recently, it was showed that
+interactions involving helical structures are highly complex, and thus
+more sophisticated models are needed to account for the effects that
+such interactions have on peptide retention time \cite{ah}.
+
+A limitation of SSRCacls is that the algorithm was
+optimized for predicting retention times for certain chromatography
+setups. Thus, SSRCalc's prediction ability deteriorates for
+experimental conditions diverging from the setup on which the
+algorithm was optimized \cite{Spicer2007}.
 
 % - sum of retention coefficients (Meek reference 22) - different RT
 % coefficients and the observation that this coefficients depend on
