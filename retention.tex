@@ -35,8 +35,8 @@ Stockholm, Sweden}
 
 \section{Introduction}
 
-Mass spectrometry-based methods are unquestionably the most popular
-techniques for studying the proteint content of biological samples.
+Mass spectrometry (MS) based methods are unquestionably the most popular
+techniques for studying the protein content of biological samples.
 The palette of protemic applications where such methods are used is
 getting increasingly diversified, ranging from identifying and
 quantifying proteins in biological samples \cite{Geiger2012} to
@@ -72,8 +72,8 @@ Furthermore, a large proportion of proteins are subjected to
 posttranslational modifications. As an example, a few years ago more
 than 25,000 phosphorylation sites on human proteins were already
 reported~\cite{Lemeer2009}. To manage this formidable diversity,
-increasing efforts are made to extract - besides the fragmentation
-spectra - additional information from each MS experiment.
+increasing efforts are made to extract besides the fragmentation
+spectra additional information from each MS experiment.
 
 An example of such additional information is represented by retention
 times, i.e. the time points when peptides elute from the liquid
@@ -127,15 +127,12 @@ virtually all the information needed to predict its retention time.
 
 % iRT? \cite{Escher:2012qv}
 Following these observations, a variety of retention time prediction
-methods has been proposed. Most naturally one could 
-
-
-These methods can be roughly divided into four classes: look-up
-tables-based approaches, index-based methods, modeling-based methods
-and machine learning techniques. The main ideas underlying each
-category are described below, while Table \ref{tab:rtmethods} lists a
-few of the most popular retention time prediction methods from each
-category.
+methods has been proposed. Most naturally one could divide these
+methods into four classes: look-up tables-based approaches,
+index-based methods, modeling-based methods and machine learning
+techniques. The main ideas underlying each category are described
+below, while Table \ref{tab:rtmethods} lists a few of the most popular
+retention time prediction methods from each category.
 
 \subsection{Methods based on look-ups of previous registered retention times}
 
@@ -541,41 +538,41 @@ experiments \cite{bielow2011}.
 % It is an orthogonal information. Decrease the database search space,
 % study properties of the peptides
  
-\section{\label{sec:irt}Peptide retention standards}
+%\section{\label{sec:irt}Peptide retention standards}
 
-\hyphenation{wide-spread}
+%\hyphenation{wide-spread}
 % peptide standards what they are, what they are used for 
-In the past years, the use of retention standards has become
-increasingly widespread in the context of mass spectrometry-based
-proteomics~\cite{olegstd, irt}. Such standards typically consist of a
-small number of peptides covering a wide span of hydrophobicities and
-with well studied behaviors under LC-MS/MS. These peptides are often
-analyzed together with the sample of interest, and by comparing their
-observed and expected behaviors one can obtain valuable information
-for a variety of applications.
+%In the past years, the use of retention standards has become
+%increasingly widespread in the context of mass spectrometry-based
+%proteomics~\cite{olegstd, irt}. Such standards typically consist of a
+%small number of peptides covering a wide span of hydrophobicities and
+%with well studied behaviors under LC-MS/MS. These peptides are often
+%analyzed together with the sample of interest, and by comparing their
+%observed and expected behaviors one can obtain valuable information
+%for a variety of applications.
 
 
 
-As an example, in targeted proteomics peptide standards can be used to
- calibrate predicted retention times and to estimate the accuracy of
- the prediction algorithms~\cite{Kiyonami01022011}. In addition,
- recent studies have reported excellent results when using peptide
- standards to adjust the time when certain transitions are scheduled
- ``on-the-fly''~\cite{seb, irt}. Retention standards are also useful
- for aligning data from multiple experiments~\cite{petritis2003}, to
- transfer retention times between different chromatography
- setups~\cite{seb}, or to keep track of the performance of LC-MS/MS
- systems~\cite{qcal}.
+%As an example, in targeted proteomics peptide standards can be used to
+% calibrate predicted retention times and to estimate the accuracy of
+% the prediction algorithms~\cite{Kiyonami01022011}. In addition,
+% recent studies have reported excellent results when using peptide
+% standards to adjust the time when certain transitions are scheduled
+% ``on-the-fly''~\cite{seb, irt}. Retention standards are also useful
+% for aligning data from multiple experiments~\cite{petritis2003}, to
+% transfer retention times between different chromatography
+% setups~\cite{seb}, or to keep track of the performance of LC-MS/MS
+% systems~\cite{qcal}.
 
 \section{Discussion}
 
 Interpretation of mass spectrometry data is a question of
 understanding the properties that explain the behavior of peptides in
-an mass spectrometry experiment. The available technologies to infer
-peptides and proteins from mass spectrometry data involves predicting
-properties of peptides in a database, and compare those properties to
-the observed data. Such comparisons are for discovery proteomics done
-by so called search engines, that traditionally are limited to
+a mass spectrometry experiment. The available technologies to infer
+peptides and proteins from mass spectrometry data involve predicting
+properties of peptides from a database, and compare those properties to
+the observed data. Such comparisons are done for discovery proteomics
+by algorithms called search engines, that traditionally are limited to
 predicting predicting mass-to-charge rates of the precursor peptides,
 and their fragmentation patterns. However, an attractive way to
 increase the sensitivity of the inference procedure is to also predict
@@ -583,6 +580,7 @@ properties such as their iso-electric point~\cite{branca2014hirief} or
 of particular interest for this review, chromatographic retention
 time\cite{cerqueira2010mude}. 
 
+% This paragraph is consfusing, should be rephrased
 The principle of predictability also extends to targeted proteomics,
 in SRM analysis the peptides retention time and fragments are
 predicted from retention time, often derived from previous shotgun
