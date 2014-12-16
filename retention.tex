@@ -94,11 +94,11 @@ several applications in mass spectrometry-based proteomics
 In this review we summarize the work done in the field of retention
 time prediction, and describe a few of the successful applications of
 such predictions. Sections~\ref{sec:rtpred} and \ref{sec:rtpredm}
-describe the main approaches used to estimate retention time from
+describe the main approaches to retention time predictions from
 peptide sequences. Section~\ref{sec:app} discusses some of the most
 important applications of retention time predictions.
-Section~\ref{sec:irt} briefly introduces the use of peptide retention
-standards.
+% Section~\ref{sec:irt} briefly introduces the use of peptide retention
+% standards.
 
 
 \section{\label{sec:rtpred}Retention time prediction for unmodified peptides}
@@ -142,7 +142,7 @@ values as a basis for retention time predictions. In particular, in
 the past years the use of retention standards has become increasingly
 widespread \cite{olegstd, irt}. Such standards typically consist of a
 small number of peptides covering a wide span of hydrophobicities and
-with well studied behaviors under LC-MS/MS. These peptides are often
+favorable for detection by mass spectrometry. These peptides are often
 analyzed together with the sample of interest, and by comparing their
 observed and expected behaviors one can obtain valuable information
 for a variety of applications.
@@ -255,9 +255,9 @@ interactions involving helical structures are highly complex, and thus
 more sophisticated models are needed to account for the effects that
 such interactions have on peptide retention time \cite{ah}.
 
-A limitation of SSRCalc is that the algorithm was optimized for
+A limitation of index-based methods are that they are optimized for
 predicting retention times for certain chromatography setups. Thus,
-SSRCalc's prediction ability deteriorates for experimental conditions
+their prediction ability deteriorates for experimental conditions
 diverging from the setup on which the algorithm was optimized
 \cite{Spicer2007}.
 
@@ -595,7 +595,7 @@ suitable transitions are needed as input for the analysis. Frequently,
 such information is derived from previous shotgun analysis. As the
 capacity of targeted proteomics experiments expands by the
 introduction of the more comprehensive data independent acquisition
-techniques techniques\cite{Venable2004} (a.k.a. SWATH analysis), such
+techniques techniques \cite{Venable2004} (a.k.a. SWATH analysis), such
 pre-identification of peptide transitions and retention times
 threatens to become a limiting factor. Our current methods to identify
 peptides from DIA are only as comprehensive as the previous shotgun
@@ -627,7 +627,7 @@ It is also worth noting that the current trend of processing huge data
 repositories, frequently referred to as bigdata, have put quite some
 intest in so called deep learning techniques such as belief networks
 using restricted multiple layered bolzman machines
-(RBM)\cite{salakhutdinov2009deep} or deep neural networks. This
+(RBM) \cite{salakhutdinov2009deep} or deep neural networks. This
 follows the observation that ideathe performance of predictors often
 are enhanced if one can structure the prediction into multiple
 layers. The drawback of such models are that they require large
