@@ -35,16 +35,16 @@ Stockholm, Sweden}
 
 \section{Introduction}
 
-Mass spectrometry (MS) based methods are unquestionably the most popular
-techniques for studying the protein content of biological samples.
-The palette of protemic applications where such methods are used is
-getting increasingly diversified, ranging from identifying and
-quantifying proteins in biological samples \cite{Geiger2012} to
-determining posttranslational modifications \cite{Huttlin2010} and
-elucidating protein interaction networks \cite{Gavin2011}. 
+Mass spectrometry (MS) based methods are unquestionably the most
+popular techniques for analyzing the protein content of biological
+mixtures.  The ever-expanding palette of applications range from
+identifying and quantifying proteins in biological samples
+\cite{Geiger2012} to determining posttranslational modifications
+\cite{Huttlin2010} and elucidating protein interaction networks
+\cite{Gavin2011}.
 
 
-Although available in a variety of flavours, most of the widely spread
+Although available in a variety of flavors, most of the widely spread
 MS-based workflows consists of the same main steps. First, the
 proteins in the mixture of interest are cleaved into peptides using a
 sequence-specific enzyme such as trypsin. This step is necessary
@@ -161,6 +161,7 @@ As an example, in targeted proteomics, peptide standards can be used to
  systems~\cite{qcal}.
 
 \subsection{Index-based methods}
+\label{sec:irt}
 \hyphenation{lear-ning}
 \hyphenation{indivi-dual}
 
@@ -199,7 +200,7 @@ predicting the retention time of longer peptides.
  \hline
 SSRCalc & \url{http://hs2.proteome.ca/SSRCalc/SSRCalcX.html} & \cite{Krokhin2004, Krokhin2006}, \cite{Spicer2007} \\
 BioLCCC & \url{http://theorchromo.ru/} & \cite{gorshkov2006} \\
-ANN & Link? & \cite{petritis2003 ,petritis2006improved} \\
+ANN & Link? & \cite{petritis2003,petritis2006improved} \\
 RTModel, RTPredict &  \url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
  & \cite{rtpredict, rtpredictImproved} \\
 &\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \\
@@ -254,11 +255,11 @@ interactions involving helical structures are highly complex, and thus
 more sophisticated models are needed to account for the effects that
 such interactions have on peptide retention time \cite{ah}.
 
-A limitation of SSRCacls is that the algorithm was
-optimized for predicting retention times for certain chromatography
-setups. Thus, SSRCalc's prediction ability deteriorates for
-experimental conditions diverging from the setup on which the
-algorithm was optimized \cite{Spicer2007}.
+A limitation of SSRCalc is that the algorithm was optimized for
+predicting retention times for certain chromatography setups. Thus,
+SSRCalc's prediction ability deteriorates for experimental conditions
+diverging from the setup on which the algorithm was optimized
+\cite{Spicer2007}.
 
 % - sum of retention coefficients (Meek reference 22) - different RT
 % coefficients and the observation that this coefficients depend on
@@ -308,7 +309,6 @@ be subsequently used to predict retention time for other peptides of
 interest.
 
 
-
 One of the first machine learning approaches for retention time
 prediction was based on an Artificial Neural Network
 (ANN) \cite{petritis2003}. Initially, each peptide was described by 20
@@ -316,22 +316,22 @@ features giving the number of each of the 20 amino acid residues
 present in the sequence. The network was trained using $\sim$7000
 peptides with known retention times and evaluated using a set of
 $\sim$5000 peptides originating from another organism. The algorithm
-reported good accuracies, especially taking into account that it only
+reported good accuracy, especially taking into account that it only
 used information about the amino acid composition of the peptides.
 
 
 
 In a follow-up work, the method was extended by representing each
- peptide by 1052 instead of 20
- features \cite{petritis2006improved}. The new descriptors encoded the
- identity of each amino acid at each position in a sequence, as well
- as the length and the hydrophobic moment of the peptide. The new
- neural network was trained on more than 300,000 peptide sequences. To
- obtain such a large number of peptides with known retention times, a
- strategy to normalize elution times was developed. This allowed
- pooling of peptides identified in more than 12,000 shotgun
- experiments. The trained algorithm reported excellent performance for
- the 1303 peptides on which it was evaluated.
+peptide by 1052 instead of 20 features
+\cite{petritis2006improved}. The new descriptors encoded the identity
+of each amino acid at each position in a sequence, as well as the
+length and the hydrophobic moment of the peptide. The new neural
+network was trained on more than 300,000 peptide sequences. To obtain
+such a large number of peptides with known retention times, a strategy
+to normalize elution times was developed. This allowed pooling of
+peptides identified in more than 12,000 shotgun experiments. The
+trained algorithm reported excellent performance for the 1303 peptides
+on which it was evaluated.
 
 
 
@@ -344,7 +344,7 @@ Klammer et al. proposed a predictor based on support vector machines
 (SVMs) \cite{klammer2007improving}. Their method required fewer
 training peptides and could thus be easily adapted to new
 chromatographic conditions, but yielded lower prediction
-accuracies. Subsequently, a more elaborate SVM-based method using a
+accuracy. Subsequently, a more elaborate SVM-based method using a
 customized kernel function was proposed \cite{rtpredict, rtpredictImproved}. This
 approach provided reasonable prediction accuracy, while requiring as
 little as 50 peptides for training.
@@ -358,7 +358,7 @@ little as 50 peptides for training.
 
 In our group we developed a software package for retention time prediction which we named {\sc
 Elude} \cite{elude1, elude2}. One of the main novelty
-points of {\sc Elude} wass the calculation of peptide features based on
+points of {\sc Elude} was the calculation of peptide features based on
 both a general hydrophobicity index, as well as a retention index
 trained for each dataset at hand. This ensured that the algorithm
 could be applied to different chromatography setups with minimal loss
@@ -373,7 +373,7 @@ using statistical methods robust to outliers.
 
 However, despite all these efforts, it should be pointed out that none
 of the retention time prediction methods currently available is able
-to provide accuracies comparable to the small shifts observed when
+to provide accuracy comparable to the small shifts observed when
 running a sample twice through a chromatography column
 (Figure \ref{fig:repr}). Recently, the lack of suitable
 representations for secondary structure elements was indicated as one
@@ -406,12 +406,21 @@ phosphopeptides \cite{Kawakami2005, perlova2010}.
 
 
 
-To address this, in our group we extended the first version of our algorithm {\sc ELUDE} to encompass modified peptides as well. This was straightforward to achieve once we observed that the in-house trained  retention index contained nearly all the information incorporated in the more general hydrophobicity scale. This meant that we could remove all the features based on this index with minimal loss in accuracy. Further, we redefined all features describing a peptide in terms of the in-house retention index alone. Since this index was trained for each dataset at hand, the algorithm became fully trainable for any modified amino acid (Figure \ref{fig:elude}). We evaluated the new version of {\sc ELUDE} on peptides containing artifactual modifications introduced as part of an MS protocol called COmbined
-FRActional DIagonal Chromatography (COFRADIC) \cite{Gevaert2002}. Our results showed that  {\sc ELUDE} yielded equally accurate predictions for modified and
-unmodified peptides  \cite{elude2}.
-
-
-
+To address this, in our group we extended the first version of our
+algorithm {\sc ELUDE} to encompass modified peptides as well. This was
+straightforward to achieve once we observed that the in-house trained
+retention index contained nearly all the information incorporated in
+the more general hydrophobicity scale. This meant that we could remove
+all the features based on this index with minimal loss in
+accuracy. Further, we redefined all features describing a peptide in
+terms of the in-house retention index alone. Since this index was
+trained for each dataset at hand, the algorithm became fully trainable
+for any modified amino acid (Figure \ref{fig:elude}). We evaluated the
+new version of {\sc ELUDE} on peptides containing artifactual
+modifications introduced as part of an MS protocol called COmbined
+FRActional DIagonal Chromatography (COFRADIC) \cite{Gevaert2002}. Our
+results showed that {\sc ELUDE} yielded equally accurate predictions
+for modified and unmodified peptides \cite{elude2}.
 
 As large-scale studies of a variety of posttranslational modifications
 increasingly come within reach, predictors
@@ -431,7 +440,6 @@ about the identity of the peptides can be obtained. This relatively
 straightforward idea has been implemented in a variety of flavors and
 was proven to bring significant improvements in the peptide
 identification process.
-
 
 
 Palmblad et al. showed that matching theoretical and observed masses
@@ -584,20 +592,20 @@ Moreover, targeted proteomics experiments, such as Selected Reaction
 Monitoring (SRM) experiments, are dependent on the predictability of a
 peptides behavior. In such experiments the retention times and the
 suitable transitions are needed as input for the analysis. Frequently,
-such information is derived from previous shotgun analysis. However,
-as the capacity of targeted proteomics experiments expands by the
+such information is derived from previous shotgun analysis. As the
+capacity of targeted proteomics experiments expands by the
 introduction of the more comprehensive data independent acquisition
-techniques techniques (a.k.a. SWATH analysis), the pre-identification
-of peptide transitions and retention times threatens to become a
-limiting factor, as the analysis never can become more comprehensive
-than the previous shotgun analysis would be. In such a scenario it
-becomes increasingly attractive to predict retention time and
-transition using {\em de novo} predictions from the peptides amino
-acid sequences.  A system of identifications not dependent on previous
-peptide identifications from shotgun proteomics experiment would lead
-to a more direct experimental design and hopefully to more
+techniques techniques\cite{Venable2004} (a.k.a. SWATH analysis), such
+pre-identification of peptide transitions and retention times
+threatens to become a limiting factor. Our current methods to identify
+peptides from DIA are only as comprehensive as the previous shotgun
+analysis would be. An attractive alternative is to predict retention
+time and transition using {\em de novo} predictions from the peptides
+amino acid sequences.  Such a system of identifications not dependent
+on previous peptide identifications from shotgun proteomics experiment
+would lead to a more direct experimental design and hopefully to more
 comprehensie coverage. Thus {\em de novo} retention time predictions
-have an important role to fill. 
+have an important role to fill.
 %However, to do so we need to make the technique more accurate.
 
 We can see that there are a number of interesting machine learning
@@ -605,31 +613,41 @@ techniques that not yet have been used on the problem of predicting
 peptides retention time. Here we will bring up one such techniques,
 that we feel are particularly good matches, that we have not yet seen
 implemented for the problem. Pairwise Machine-learned ranking (MLR)
-(\url{http://dx.doi.org/10.1561%2F1500000016}) models can be trained
-to determine which of two examples that should be better ranked thatn
-the other. MLR is traditionally used for construction of ranking
-models for information retrieval systems. However, in the case of
-retention time prediction we can use such a predictor to predict the
-elusion order for sets of peptides, which can be useful in its own
-(coon; just in time), but can also be converted into absolute
-retention times, given that the distribution of their retention times
-are known.  
+\cite{liu2009learning} models can be trained to determine which of two
+examples that should be better ranked thatn the other. MLR is
+traditionally used for construction of ranking models for information
+retrieval systems. However, in the case of retention time prediction
+we can use such a predictor to predict the elusion order for sets of
+peptides, which can be useful in its own \cite{bailey2012instant}, but
+can also be converted into absolute retention times, given that the
+distribution of their retention times are known.
 
 
 It is also worth noting that the current trend of processing huge data
 repositories, frequently referred to as bigdata, have put quite some
 intest in so called deep learning techniques such as belief networks
-using restricted multiple layered bolzman machines (RBM; cite
-http://bit.ly/1vMq6az) or deep neural networks. The idea is that the
-performance of predictors often are enhanced if one can structure the
-prediction into multiple layers. The drawback of such models are that
-they require large training seta. Given the very large sets of
-peptides with retention times that are assembled in various
-repositories, such as peptide atlas and pride, such methods could
-probably be implemented for retention time prediction as well.   
+using restricted multiple layered bolzman machines
+(RBM)\cite{salakhutdinov2009deep} or deep neural networks. This
+follows the observation that ideathe performance of predictors often
+are enhanced if one can structure the prediction into multiple
+layers. The drawback of such models are that they require large
+training sets. Given the very large sets of peptides with retention
+times that are assembled in various repositories, such as peptide
+atlas and pride, such methods could probably be implemented for
+retention time prediction as well.
+
+% Might be good to add something about that the relatively low
+% accuracy in our predictions, there should be some room for
+% improvements in the near future.
 
 \bibliographystyle{unsrt}
 \bibliography{./retention.bib}
 
 
 \end{document}
+
+%%  LocalWords:  hydrophobicity chromatography elute peptides physico
+%%  LocalWords:  electrospray spectrometry analytical proteomics RPLC
+%%  LocalWords:  posttranslational phosphorylation proteome analytes
+%%  LocalWords:  peptide elutes amino tryptic isoelectric SSRCacls
+%%  LocalWords:  workflows trypsin hydrophobicities chromatographic
