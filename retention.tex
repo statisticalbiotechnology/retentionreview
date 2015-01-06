@@ -15,7 +15,7 @@ School of Biotechnology,\\
 Royal Institute of Technology (KTH),\\
 Stockholm, Sweden
 \and
-Lukas K\"all\\
+Lukas K\"{a}ll\\
 Science for Life Laboratory,\\
 School of Biotechnology,\\
 Royal Institute of Technology (KTH),\\
@@ -69,25 +69,25 @@ display a wide range of physico-chemical properties and are often
 found at very different amounts in complex samples, spanning as much
 as 12 orders of magnitude in relative abundance~\cite{Angel2012}.
 Furthermore, a large proportion of proteins are subjected to
-posttranslational modifications. As an example, a few years ago more
-than 25,000 phosphorylation sites on human proteins were already
-reported~\cite{Lemeer2009}. To manage this formidable diversity,
-increasing efforts are made to extract besides the fragmentation
-spectra additional information from each MS experiment.
+posttranslational modifications~\cite{Lemeer2009}. To manage this
+formidable diversity, increasing efforts are made to extract besides
+the fragmentation spectra additional information from each MS
+experiment.
 
 An example of such additional information is represented by retention
 times, i.e. the time points when peptides elute from the liquid
 chromatography column.  The main purpose of liquid chromatography is
 to reduce the number of peptides simultaneously injected into the mass
-spectrometer, and by this increase the proteome coverage achieved in
-an experiment.  However, besides this, the separation process in
-itself provides useful information about the analytes. On the one
-hand, the instrument always records the time when a peptide elutes
-from the chromatography column, i.e. the retention time. On the other
-hand, the retention time can also be estimated by examining the
-sequence of the peptide. The availability of both predicted and
-observed retention times has proven to be a powerful feature, with
-several applications in mass spectrometry-based proteomics
+spectrometer. This increases the probability of each individual
+peptide to be selected for fragmentation, which in its turn, increases
+the proteome coverage achieved in an experiment.  However, besides
+this, the separation process in itself provides useful information
+about the analytes. On the one hand, the instrument always records the
+time when a peptide elutes from the chromatography column, i.e. the
+retention time. On the other hand, the retention time can also be
+estimated by examining the sequence of the peptide. The availability
+of both predicted and observed retention times has proven to be a
+powerful feature, with several applications in MS-based proteomics
 \cite{Palmblad2013}.
 
 
@@ -356,18 +356,18 @@ little as 50 peptides for training.
 
 
 
-In our group we developed a software package for retention time prediction which we named {\sc
-Elude} \cite{elude1, elude2}. One of the main novelty
-points of {\sc Elude} was the calculation of peptide features based on
-both a general hydrophobicity index, as well as a retention index
-trained for each dataset at hand. This ensured that the algorithm
-could be applied to different chromatography setups with minimal loss
-in performance. For cases when little training data was available,
-{\sc ELUDE} implemented an additional workflow based on a library of
-pre-trained retention models. This workflow required only a few tens
-of training peptides to select and calibrate the most suitable model
-from the library. Both the selection and calibration were performed
-using statistical methods robust to outliers.
+Moruz {\em et al.} developed a software package for retention time
+prediction which we named {\sc Elude} \cite{elude1, elude2}. One of
+the main novelty points of {\sc Elude} was the calculation of peptide
+features based on both a general hydrophobicity index, as well as a
+retention index trained for each dataset at hand. This ensured that
+the algorithm could be applied to different chromatography setups with
+minimal loss in performance. For cases when little training data was
+available, {\sc ELUDE} implemented an additional workflow based on a
+library of pre-trained retention models. This workflow required only a
+few tens of training peptides to select and calibrate the most
+suitable model from the library. Both the selection and calibration
+were performed using statistical methods robust to outliers.
 
 
 
@@ -442,7 +442,7 @@ was proven to bring significant improvements in the peptide
 identification process.
 
 
-Palmblad et al. showed that matching theoretical and observed masses
+Palmblad {\em et al.} showed that matching theoretical and observed masses
 and retention times provides a simple, yet powerful method to identify
 peptides in simple biological
 mixtures \cite{palmblad2002prediction}. Strittmatter et al. used
@@ -458,12 +458,15 @@ identifications \cite{klammer2007improving}.
 
 
 
-In our group we have also investigated the possibility to use predicted retention times to increase the throughput of proteomics experiments. Our starting point was the observation that in typical shotgun proteomics experiments only a small fraction of the detected ions is
-fragmented, and thus used to identify
-peptides. The remaining unfragmented ions are usually disregarded in
-the subsequent data analyses. In the light of these observations, we investigated whether we could use
-information encapsulated by unfragmented ions to improve the protein
-inference in shotgun proteomics \cite{mf}.
+Moruz {\em et al.} also investigated the possibility to use predicted
+retention times to increase the throughput of proteomics
+experiments. Their starting point was the observation that in typical
+shotgun proteomics experiments only a small fraction of the detected
+ions is fragmented, and thus used to identify peptides. The remaining
+unfragmented ions are usually disregarded in the subsequent data
+analyses. In the light of these observations, they investigated
+whether we could use information encapsulated by unfragmented ions to
+improve the protein inference in shotgun proteomics \cite{mf}.
 
 
 
@@ -574,6 +577,40 @@ experiments \cite{bielow2011}.
 
 \section{Discussion}
 
+The current accuracy of the de novo retention time predictors that we
+have discussed here is still much lower than the methods based on look
+ups of previous registered retention time. The large availability of
+data leads one to think that there still is a possibility to increase
+the accuracy of such predictions by better technology. 
+% Shorten the next two paragraphs
+We can see that
+there are a number of interesting machine learning techniques that not
+yet have been used on the problem of predicting peptides retention
+time. Here we will bring up one such techniques, that we feel are
+particularly good matches, that we have not yet seen implemented for
+the problem. Pairwise Machine-learned ranking (MLR)
+\cite{liu2009learning} models can be trained to determine which of two
+examples that should be better ranked thatn the other. MLR is
+traditionally used for construction of ranking models for information
+retrieval systems. However, in the case of retention time prediction
+we can use such a predictor to predict the elusion order for sets of
+peptides, which can be useful in its own \cite{bailey2012instant}, but
+can also be converted into absolute retention times, given that the
+distribution of their retention times are known.
+
+It is also worth noting that the current trend of processing huge data
+repositories, frequently referred to as bigdata, have put quite some
+intest in so called deep learning techniques such as belief networks
+using restricted multiple layered bolzman machines
+(RBM) \cite{salakhutdinov2009deep} or deep neural networks. This
+follows the observation that ideathe performance of predictors often
+are enhanced if one can structure the prediction into multiple
+layers. The drawback of such models are that they require large
+training sets. Given the very large sets of peptides with retention
+times that are assembled in various repositories, such as peptide
+atlas and pride, such methods could probably be implemented for
+retention time prediction as well.
+
 Interpretation of mass spectrometry data is a question of
 understanding the properties that explain the behavior of peptides in
 a mass spectrometry experiment. The available technologies to infer
@@ -607,34 +644,6 @@ would lead to a more direct experimental design and hopefully to more
 comprehensie coverage. Thus {\em de novo} retention time predictions
 have an important role to fill.
 %However, to do so we need to make the technique more accurate.
-
-We can see that there are a number of interesting machine learning
-techniques that not yet have been used on the problem of predicting
-peptides retention time. Here we will bring up one such techniques,
-that we feel are particularly good matches, that we have not yet seen
-implemented for the problem. Pairwise Machine-learned ranking (MLR)
-\cite{liu2009learning} models can be trained to determine which of two
-examples that should be better ranked thatn the other. MLR is
-traditionally used for construction of ranking models for information
-retrieval systems. However, in the case of retention time prediction
-we can use such a predictor to predict the elusion order for sets of
-peptides, which can be useful in its own \cite{bailey2012instant}, but
-can also be converted into absolute retention times, given that the
-distribution of their retention times are known.
-
-
-It is also worth noting that the current trend of processing huge data
-repositories, frequently referred to as bigdata, have put quite some
-intest in so called deep learning techniques such as belief networks
-using restricted multiple layered bolzman machines
-(RBM) \cite{salakhutdinov2009deep} or deep neural networks. This
-follows the observation that ideathe performance of predictors often
-are enhanced if one can structure the prediction into multiple
-layers. The drawback of such models are that they require large
-training sets. Given the very large sets of peptides with retention
-times that are assembled in various repositories, such as peptide
-atlas and pride, such methods could probably be implemented for
-retention time prediction as well.
 
 % Might be good to add something about that the relatively low
 % accuracy in our predictions, there should be some room for
