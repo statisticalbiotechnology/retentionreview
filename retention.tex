@@ -645,36 +645,38 @@ experiments \cite{bielow2011}.
 
 The accuracy of the machine learning-based methods described in
 section \ref{sec:ML} is still much lower than the methods based on
-look ups of previous registered retention time. However, the large
-availability of datasets leads one to think that there still is a
-possibility to increase the accuracy of such predictions by enhanced
-machinelearning technology.  We can see that there are a number of
-interesting techniques that not yet have been used on the problem of
-predicting peptides retention time. Here we will bring up one such
-techniques, that we feel are particularly good matches, that we have
-not yet seen implemented for the problem. Pairwise Machine-learned
-ranking (MLR) \cite{liu2009learning} models can be trained to
-determine which of two examples that should be better ranked thatn the
-other. MLR is traditionally used for construction of ranking models
-for information retrieval systems. However, in the case of retention
-time prediction we can use such a predictor to predict the elusion
-order for sets of peptides, which can be useful in its own
-\cite{bailey2012instant}, but can also be converted into absolute
-retention times, given that the distribution of their retention times
-are known.
+look-ups of previously registered retention times. However, the large
+availability of datasets suggests that one possibility to increase the
+accuracy of retention time predictions could rely on the use of
+enhanced machine learning methods. Currently, there are a number of
+such techniques that have not yet been applied to the problem of
+predicting peptides' retention time. Here we will bring up one such
+technique called pairwise Machine-Learned Ranking (MLR)
+\cite{liu2009learning}, which we feel is particularly suitable for
+this problem. MLR models can be trained to determine which of two data
+points should be better ranked. 
+
+MLR has traditionally been used for construction of ranking models for
+information retrieval systems. However, in the case of retention time
+prediction, we can use such a predictor to estimate the elution order
+for sets of peptides. While such information can be useful in its own
+\cite{bailey2012instant}, it can also be converted into absolute
+retention times, given that the distribution of the retention times is
+known.
 
 It is also worth noting that the current trend of processing huge data
-repositories, frequently referred to as bigdata, have put quite some
-intest in so called deep learning techniques such as belief networks
+repositories, frequently referred to as bigdata, have brought into
+attention so called deep learning techniques such as belief networks
 using restricted multiple layered bolzman machines (RBM)
 \cite{salakhutdinov2009deep} or deep neural networks. This follows the
-observation that ideathe performance of predictors often are enhanced
-if one can structure the prediction into multiple layers. The drawback
-of such models are that they require large training sets. Given the
-very large sets of peptides with retention times that are assembled in
-various repositories, such as Peptide Atlas \cite{desiere2006peptideatlas} and
-PRIDE \cite{martens2005pride}, such methods could probably be
-implemented for retention time prediction as well.
+observation that the performance of predictors is often enhanced if
+one can structure the prediction into multiple layers. The drawback of
+such models are that they require large training sets. Given the very
+large sets of peptides with retention times that are assembled in
+various repositories, such as Peptide Atlas
+\cite{desiere2006peptideatlas} and PRIDE \cite{martens2005pride}, such
+methods could probably be implemented for retention time prediction as
+well.
 
 The available technologies to infer peptides and proteins from mass
 spectrometry data involve predicting the the potential manifestations
@@ -688,22 +690,22 @@ for this review, chromatographic retention
 time\cite{cerqueira2010mude}. 
 
 Moreover, targeted proteomics experiments, such as Selected Reaction
-Monitoring (SRM) experiments, are dependent on the predictability of a
-peptides behavior. In such experiments the retention times and the
-suitable transitions are needed as input for the analysis. Frequently,
+Monitoring (SRM), are dependent on the predictability of a
+peptide's behavior. In such experiments the retention times and the
+suitable transitions are needed as input to the analysis. Frequently,
 such information is derived from previous shotgun analysis. As the
 capacity of targeted proteomics experiments expands by the
 introduction of the more comprehensive data independent acquisition
-techniques techniques \cite{Venable2004} (a.k.a. SWATH analysis), such
+techniques \cite{Venable2004} (a.k.a. SWATH analysis), such
 pre-identification of peptide transitions and retention times
 threatens to become a limiting factor. Our current methods to identify
 peptides from DIA are only as comprehensive as the previous shotgun
 analysis would be. An attractive alternative is to predict retention
 time and transition using {\em de novo} predictions from the peptides
 amino acid sequences.  Such a system of identifications not dependent
-on previous peptide identifications from shotgun proteomics experiment
+on previous peptide identifications from shotgun proteomics experiments
 would lead to a more direct experimental design and hopefully to more
-comprehensie coverage. Thus {\em de novo} retention time predictions
+comprehensie coverages. Thus {\em de novo} retention time predictions
 have an important role to fill.
 
 % Might be good to add something about that the relatively low
