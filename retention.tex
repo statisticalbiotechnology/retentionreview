@@ -43,7 +43,6 @@ identifying and quantifying proteins in biological samples
 \cite{Huttlin2010} and elucidating protein interaction networks
 \cite{Gavin2011}.
 
-
 Although available in a variety of flavors, most of the widely spread
 MS-based workflows consists of the same main steps. First, the
 proteins in the mixture of interest are cleaved into peptides using a
@@ -57,7 +56,6 @@ ionized via electrospray ionization and subjected to mass spectrometry
 analysis. The result of these measurements consists of a set of
 spectra, which are subsequently used to infer valuable information
 about the proteins present in the initial sample.
-
 
 Today a majority of the mass spectrometry (MS) protocols in use are
 high-throughput, generating extensive amounts of data. This has
@@ -89,19 +87,94 @@ of both predicted and observed retention times has proven to be a
 powerful feature, with several applications in MS-based proteomics
 \cite{Palmblad2013}.
 
-
 In this review we summarize the work done in the field of retention
 time prediction, and describe a few of the successful applications of
-such predictions. Sections~\ref{sec:rtpred} and \ref{sec:rtpredm}
-describe the main approaches to retention time predictions from
-peptide sequences. Section~\ref{sec:app} discusses some of the most
-important applications of retention time predictions.
+such predictions. Section~\ref{sec:rplc} describes the basics of
+peptide separation using reversed-phase liquid chromatography, while
+Sections~\ref{sec:rtpred} and \ref{sec:rtpredm} summarize the main
+approaches to retention time predictions from peptide
+sequences. Section~\ref{sec:app} discusses some of the most important
+applications of retention time predictions.
 % Section~\ref{sec:irt} briefly introduces the use of peptide retention
 % standards.
 
 
-\section{\label{sec:rtpred}Retention time prediction for unmodified peptides}
+\section{\label{sec:rplc}Basics of peptide separation via reversed-phase liquid chromatography}
+% main idea about RPLC 
 
+At the moment, Reversed-Phase Liquid Chromatography (RPLC) is by far
+the preferred method for separating peptides prior to mass
+spectrometry analysis \cite{Xie201278}. This is mainly because the
+method provides good resolution, gives reproducible results, and most
+of all, is compatible with electrospray ionization. In virtually all
+modern mass spectrometers the RPLC system can be easily connected to
+the ionization source, such that the peptides can be automatically
+transferred to mass spectrometry analysis as they elute from the
+chromatography column.
+
+In RPLC the peptides are separated according to their hydrophobicity
+in a thin tube called chromatographic column. This tube is uniformly
+packed with porous silica beads, such that there is as little
+unoccupied space as possible between the particles. Each of the beads
+contains hydrophobic chains attached. For peptide separation it is
+common to use long alkyl chains such as C8 or C18, although other
+options are also available. The packing of the column is commonly
+denoted as the stationary phase.
+
+Two types of solvents referred to as the mobile phase are used in
+RPLC. By convention, these solvents are denoted A and B. Solvent A
+refers to an aqueous buffer, typically composed of water and 0.1\%
+acid. Solvent B generally consists of a large percentage of organic
+solvent such as acetonitrile and 0.1\% acid. Any RPLC device includes
+a mechanism to pump and mix the two solvents at precise proportions.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[trim=0.5cm 2.8cm 0.5cm 3.5cm, clip=true, width=0.8\textwidth]{img/rplc.pdf}
+\caption{\label{fig:rplc} {\bf Principles of liquid chromatography.}
+  The peptides mixed with mobile phase are injected on the column
+  (Panel A). As an increasing amount of solvent B is mixed in, the
+  peptides are released from the column in order of hydrophobicity
+  (Panels B and C). The signal at the end of the column can be
+  measured at each time point and displayed as a chromatogram (Panel
+  D). Image adapted from www.lamondlab.com.}
+\vspace{-7pt}
+\end{figure}
+
+During separation, the peptide mixture of interest is dissolved in
+solvent A and injected onto the column. As they move through the
+silica beads, peptides with different properties bind to the alkyl
+chains with varying strengths. To release them from the column, an
+increasing amount of solvent B is gradually mixed with buffer A and
+pumped through the column (Figure~\ref{fig:rplc}). Each peptide is
+released at a specific concentration of solvent B, and thus all the
+individual molecules representing a peptide species elute at about the
+same time.  Hence, if measuring the signal at the exit of the column,
+a peak would be observed for each distinct peptide species.
+
+The amount of time that a peptide needs to travel through the column
+is called retention time, shortly $t_R$. One often uses the term
+retention time to refer to the time corresponding to the apex of each
+peptide's elution peak (Figure~\ref{fig:rplc}, Panel D). Typically,
+the more hydrophobic the peptide, the longer the retention time.
+
+% say something about gradient and washing 
+Since the elution of the peptides is determined by the proportion of
+solvent B present at each time point, the scheme used to add solvent B
+is an essential aspect of any RPLC experiment. Currently, the most
+commonly used approach is based on so-called linear gradients, where
+the increase in solvent B follows a linear function. Most of the
+peptides elute before the percentage of solvent B reaches 40\%, and
+thus gradients often go from 2 to 40\% B. A high increase in
+percentage B at the end of the run ensures that all the remaining
+compounds are washed off from the column.
+
+A great advantage of RPLC is its remarkable versatility. By altering a
+variety of parameters such as column dimensions, the composition of
+stationary and mobile phase, temperature or gradient slope, the method
+can be adapted to separate a variety of compounds.
+
+\section{\label{sec:rtpred}Retention time prediction for unmodified peptides}
 
 Liquid chromatography gives reproducible results. Except for small
 shifts from run to run, the same peptide elutes at about the same time
