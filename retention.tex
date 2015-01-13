@@ -155,8 +155,11 @@ a peak would be observed for each distinct peptide species.
 The amount of time that a peptide needs to travel through the column
 is called retention time, shortly $t_R$. One often uses the term
 retention time to refer to the time corresponding to the apex of each
-peptide's elution peak (Figure~\ref{fig:rplc}, Panel D). Typically,
-the more hydrophobic the peptide, the longer the retention time.
+peptide's elution peak (Figure~\ref{fig:rplc}, Panel D). This time
+point will be proportional to the peptide's ability to lower the
+surface potential between the beads and the solvent, a property that
+we normally refer to as the peptide's hydrophobicity.  Typically, the
+more hydrophobic the peptide, the longer the retention time.
 
 % say something about gradient and washing 
 Since the elution of the peptides is determined by the proportion of
@@ -272,7 +275,7 @@ predicting the retention time of longer peptides.
  \hline
 SSRCalc & \url{http://hs2.proteome.ca/SSRCalc/SSRCalcX.html} & \cite{Krokhin2004, Krokhin2006}, \cite{Spicer2007} \\
 BioLCCC & \url{http://theorchromo.ru/} & \cite{gorshkov2006} \\
-ANN & Link? & \cite{petritis2003,petritis2006improved} \\
+% ANN & Link? & \cite{petritis2003,petritis2006improved} \\
 RTModel, RTPredict &  \url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
  & \cite{rtpredict, rtpredictImproved} \\
 &\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \\
@@ -557,9 +560,9 @@ to identify proteins via mass spectrometry. However, when introduced
 in the 90's, mass fingerprinting could not be applied to unequivocally
 identify proteins in complex biological samples. Consequently, shotgun
 proteomics has gained popularity instead. Nevertheless, with great
-developments in instrumentation leading to sub-ppm mass accuracies,
+developments in instrumentation leading to sub-ppm mass accuracy,
 the possibility of using mass fingerprinting-like methods came back to
-attention~\cite{iamt1}. Our study showed how improved mass accuracies
+attention~\cite{iamt1}. Our study showed how improved mass accuracy
 and retention time predictions enable the use of unfragmented ions
 even in the context of complex peptide mixtures. 
 
@@ -586,15 +589,18 @@ distributions of the peptides across runs.
 
 
 
-We tested this hypothesis by calculating and evaluating
-two types of nonlinear gradients \cite{gradopt1}. Our results showed that the new
+We tested this hypothesis by calculating and evaluating two types of
+nonlinear gradients \cite{gradopt1}. Our results showed that the new
 gradients not only provided more uniform distributions of the
 peptides, but also led to an increase in the number of peptide
 identifications. In addition, they facilitated the identification of
-different peptide species compared to the typical linear gradients. To allow the easy calculation of nonlinear gradients by any MS practitioner, we also implemented a user-friendly graphical user interface that can be downloaded free of cost \cite{gradopt2}. 
-Seen from a general perspective, this showed that the gradient function is yet another parameter that researchers can alter
-in their experiments, opening up a whole new range of potential
-applications. 
+different peptide species compared to the typical linear gradients. To
+allow the easy calculation of nonlinear gradients by any MS
+practitioner, we also implemented a user-friendly graphical user
+interface that can be downloaded free of cost \cite{gradopt2}.  Seen
+from a general perspective, this showed that the gradient function is
+yet another parameter that researchers can alter in their experiments,
+opening up a whole new range of potential applications.
 
 
 
@@ -667,7 +673,7 @@ known.
 It is also worth noting that the current trend of processing huge data
 repositories, frequently referred to as bigdata, have brought into
 attention so called deep learning techniques such as belief networks
-using restricted multiple layered bolzman machines (RBM)
+using restricted multiple layered Boltzmann machines (RBM)
 \cite{salakhutdinov2009deep} or deep neural networks. This follows the
 observation that the performance of predictors is often enhanced if
 one can structure the prediction into multiple layers. The drawback of
@@ -705,7 +711,7 @@ time and transition using {\em de novo} predictions from the peptides
 amino acid sequences.  Such a system of identifications not dependent
 on previous peptide identifications from shotgun proteomics experiments
 would lead to a more direct experimental design and hopefully to more
-comprehensie coverages. Thus {\em de novo} retention time predictions
+comprehensive coverage. Thus {\em de novo} retention time predictions
 have an important role to fill.
 
 % Might be good to add something about that the relatively low
@@ -721,5 +727,11 @@ have an important role to fill.
 %%  LocalWords:  hydrophobicity chromatography elute peptides physico
 %%  LocalWords:  electrospray spectrometry analytical proteomics RPLC
 %%  LocalWords:  posttranslational phosphorylation proteome analytes
-%%  LocalWords:  peptide elutes amino tryptic isoelectric SSRCacls
+%%  LocalWords:  peptide elutes amino tryptic isoelectric SSRCacls et
 %%  LocalWords:  workflows trypsin hydrophobicities chromatographic
+%%  LocalWords:  alkyl peptide's elution SSRCalc BioLCCC RTModel iRT
+%%  LocalWords:  RTPredict Krokhin al QSRR Klammer SVMs SVM Moruz pre
+%%  LocalWords:  dataset workflow outliers posttranslationally silico
+%%  LocalWords:  phosphorylated artifactual phosphopeptides COmbined
+%%  LocalWords:  FRActional DIagonal COFRADIC datasets Palmblad
+%%  LocalWords:  Strittmatter unfragmented
