@@ -195,9 +195,12 @@ virtually all the information needed to predict its retention time.
 %\begin{figure}[htbp]
 \centering
 \includegraphics[trim=0.5cm 0cm 2cm 1.5cm, clip=true, width=0.43\textwidth]{img/reproducibility.pdf}
-\caption{\label{fig:repr} {\bf Reproducibility of peptide retention time.} Two identical shotgun proteomics experiments were carried out. The retention times of the peptides confidently identified in both runs are displayed.}
+\caption{\label{fig:repr} {\bf Reproducibility of peptide retention
+    time.} Two identical shotgun proteomics experiments were carried
+  out. The retention times of the peptides confidently identified in
+  both runs are displayed.}
 %\end{figure}
-\vspace{-25pt}
+\vspace{-60pt}
 \end{wrapfigure}
 
 % iRT? \cite{Escher:2012qv}
@@ -205,9 +208,19 @@ Following these observations, a variety of retention time prediction
 methods has been proposed. Most naturally one could divide these
 methods into four classes: look-up tables-based approaches,
 index-based methods, modeling-based methods and machine learning
-techniques. The main ideas underlying each category are described
-below, while Table \ref{tab:rtmethods} lists a few of the most popular
-retention time prediction methods from each category.
+techniques. The main ideas underlying each category are illustrated in
+\ref{fig:methods} , while Table \ref{tab:rtmethods} lists a few of the
+most popular retention time prediction methods from each category.
+
+\begin{figure}[!h]
+\centering \includegraphics[clip=true,
+  width=0.8\textwidth]{img/methods.pdf}
+\caption{\label{fig:methods} {\bf Retention time prediction methods.}
+  Each figure illustrates a category of retention time prediction
+  methods. The details of each type of methods are described in detail
+  in Section \ref{sec:rtpred}}.
+\vspace{-7pt}
+\end{figure}
 
 \subsection{Methods based on look-ups of previous registered retention times}
 
