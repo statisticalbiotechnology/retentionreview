@@ -209,16 +209,17 @@ methods has been proposed. Most naturally one could divide these
 methods into four classes: look-up tables-based approaches,
 index-based methods, modeling-based methods and machine learning
 techniques. The main ideas underlying each category are illustrated in
-\ref{fig:methods} , while Table \ref{tab:rtmethods} lists a few of the
-most popular retention time prediction methods from each category.
+Figure \ref{fig:methods} , while Table \ref{tab:rtmethods} lists a few
+of the most popular retention time prediction methods from each
+category.
 
 \begin{figure}[!h]
 \centering \includegraphics[clip=true,
   width=0.8\textwidth]{img/methods.pdf}
 \caption{\label{fig:methods} {\bf Retention time prediction methods.}
-  Each figure illustrates a category of retention time prediction
-  methods. The details of each type of methods are described in detail
-  in Section \ref{sec:rtpred}}.
+  Each figure illustrates a class of retention time prediction
+  methods. The details of the different methods are described in
+  detail in Section \ref{sec:rtpred}}.
 \vspace{-7pt}
 \end{figure}
 
@@ -443,23 +444,23 @@ little as 50 peptides for training.
 
 
 Moruz {\em et al.} \cite{elude1} developed a software package for
-retention time prediction which we named {\sc Elude}. One of the main
-novelty points of {\sc Elude} was the calculation of peptide features
-based on both a general hydrophobicity index, as well as a retention
-index trained for each dataset at hand. This ensured that the
-algorithm could be applied to different chromatography setups with
-minimal loss in performance. For cases when little training data was
-available, {\sc Elude} implemented an additional workflow based on a
-library of pre-trained retention models. This workflow required only a
-few tens of training peptides to select and calibrate the most
-suitable model from the library. Both the selection and calibration
-were performed using statistical methods robust to outliers.
+retention time prediction named {\sc Elude}. One of the main novelty
+points of {\sc Elude} was the calculation of peptide features based on
+both a general hydrophobicity index, as well as a retention index
+trained for each dataset at hand. This ensured that the algorithm
+could be applied to different chromatography setups with minimal loss
+in performance. For cases when little training data was available,
+{\sc Elude} implemented an additional workflow based on a library of
+pre-trained retention models. This workflow required only a few tens
+of training peptides to select and calibrate the most suitable model
+from the library. Both the selection and calibration were performed
+using statistical methods robust to outliers.
 
 
 
 However, despite all these efforts, it should be pointed out that none
 of the retention time prediction methods currently available is able
-to provide accuracy comparable to the small shifts observed when
+to provide accuracies comparable to the small shifts observed when
 running a sample twice through a chromatography column
 (Figure \ref{fig:repr}). Recently, the lack of suitable
 representations for secondary structure elements was indicated as one
@@ -491,16 +492,16 @@ phosphopeptides \cite{Kawakami2005, perlova2010}.
 \end{figure}
 
 
-To address this, in Moruz {\em et al.}\cite{elude2} extended the first
-version of their algorithm {\sc ELUDE} to encompass modified peptides
-as well. This was straightforward to achieve once the authors observed
-that the in-house trained retention index contained nearly all the
-information incorporated in the more general hydrophobicity scale.
-This meant that they could remove all the features based on this index
-with minimal loss in accuracy. Further, they redefined all features
-describing a peptide in terms of the in-house retention index alone.
-Since this index was trained for each dataset at hand, the algorithm
-became fully trainable for any modified amino acid (Figure
+To address this, in Moruz {\em et al.}\cite{elude2} the version of
+their algorithm {\sc ELUDE} was extended to encompass modified
+peptides as well. This was straightforward to achieve once the authors
+observed that the in-house trained retention index contained nearly
+all the information incorporated in the more general hydrophobicity
+scale.  This meant that they could remove all the features based on
+this index with minimal loss in accuracy. Further, they redefined all
+features describing a peptide in terms of the in-house retention index
+alone.  Since this index was trained for each dataset at hand, the
+algorithm became fully trainable for any modified amino acid (Figure
 \ref{fig:elude}). The new version of {\sc ELUDE} was evaluated on
 peptides containing artifactual modifications introduced as part of an
 MS protocol called COmbined FRActional DIagonal Chromatography
@@ -557,12 +558,12 @@ improve the protein inference in shotgun proteomics \cite{mf}.
 
 
 % how it works and main results
-More specifically, we matched observed masses and retention times of
+More specifically, they matched observed masses and retention times of
 unfragmented ions to predicted masses and retention times for the
-theoretical peptides from an {\it in silico} digest. We built a
+theoretical peptides from an {\it in silico} digest. They built a
 statistical framework to assign protein probabilities based on these
 matches, and combined the results with the ones obtained by the
-typical workflow based on fragmented ions. Following this approach, we
+typical workflow based on fragmented ions. Following this approach, they
 obtained up to 7\% more protein identifications at a fixed false
 discovery rate threshold of 1\% \cite{mf}.
 
@@ -573,11 +574,11 @@ to identify proteins via mass spectrometry. However, when introduced
 in the 90's, mass fingerprinting could not be applied to unequivocally
 identify proteins in complex biological samples. Consequently, shotgun
 proteomics has gained popularity instead. Nevertheless, with great
-developments in instrumentation leading to sub-ppm mass accuracy,
-the possibility of using mass fingerprinting-like methods came back to
-attention~\cite{iamt1}. Our study showed how improved mass accuracy
-and retention time predictions enable the use of unfragmented ions
-even in the context of complex peptide mixtures. 
+developments in instrumentation leading to sub-ppm mass accuracy, the
+possibility of using mass fingerprinting-like methods came back to
+attention~\cite{iamt1}. The mentioned study showed how improved mass
+accuracy and retention time predictions enable the use of unfragmented
+ions even in the context of complex peptide mixtures.
 
 Krokhin et al. illustrated yet another route to employ retention time
 predictions \cite{krokhin200612, McQueen2012}. They showed that
@@ -587,42 +588,36 @@ instrument can be instructed to avoid fragmenting these peptides, thus
 decreasing the number of fragmentation events that need to be acquired
 for identifying a set of proteins.
 
-
-
 % Improve the design of SRM experiments 
-In addition, predicted retention times are useful investigating
-the elution properties of the peptides.  To illustrate this, we predicted the retention time of all the
-theoretical peptides from an {\it in silico} digest of the human
-proteome using  {\sc ELUDE}  \cite{elude1}. This exercise revealed a rather skewed
-distribution, with a majority of the peptides eluting in only a small
-portion of the chromatography run. This suggested that
-the linear gradient typically used in liquid chromatography are sub-optimal, and that one should be able to replace such gradients with nonlinear functions that produce even
-distributions of the peptides across runs.
+In addition, predicted retention times are useful investigating the
+elution properties of the peptides.  To illustrate this, in
+\cite{elude1} the retention time of all the theoretical peptides from
+an {\it in silico} digest of the human proteome were predicted using
+{\sc ELUDE}. This exercise revealed a rather skewed distribution, with
+a majority of the peptides eluting in only a small portion of the
+chromatography run. This suggested that the linear gradient typically
+used in liquid chromatography are sub-optimal, and that one should be
+able to replace such gradients with nonlinear functions that produce
+even distributions of the peptides across runs.
 
-
-
-
-We tested this hypothesis by calculating and evaluating two types of
-nonlinear gradients \cite{gradopt1}. Our results showed that the new
+This hypothesis was tested by calculating and evaluating two types of
+nonlinear gradients \cite{gradopt1}. The results showed that the new
 gradients not only provided more uniform distributions of the
 peptides, but also led to an increase in the number of peptide
 identifications. In addition, they facilitated the identification of
 different peptide species compared to the typical linear gradients. To
 allow the easy calculation of nonlinear gradients by any MS
-practitioner, we also implemented a user-friendly graphical user
-interface that can be downloaded free of cost \cite{gradopt2}.  Seen
-from a general perspective, this showed that the gradient function is
-yet another parameter that researchers can alter in their experiments,
-opening up a whole new range of potential applications.
+practitioner, a user-friendly graphical user interface was implemented 
+\cite{gradopt2}.  Seen from a general perspective, this showed that
+the gradient function is yet another parameter that researchers can
+alter in their experiments, opening up a whole new range of potential
+applications.
 
-
-
-
-Other examples of applications of retention time predictions include the optimization of  {\em de novo} targeted proteomic
-assays \cite{bertsch2010}, as well as decreasing the
-number of candidate peptides during database
-searching \cite{lobas2013} and accurate simulations of MS-based
-experiments \cite{bielow2011}.
+Other examples of applications of retention time predictions include
+the optimization of {\em de novo} targeted proteomic assays
+\cite{bertsch2010}, as well as decreasing the number of candidate
+peptides during database searching \cite{lobas2013} and accurate
+simulations of MS-based experiments \cite{bielow2011}.
 
 
 %\begin{figure}[!h]
