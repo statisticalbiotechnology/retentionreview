@@ -46,18 +46,16 @@ identifying and quantifying proteins in biological samples
 Although available in a variety of flavors, most of the widely spread
 MS-based workflows consists of the same main steps. First, the
 proteins in the mixture of interest are cleaved into peptides using a
-sequence-specific enzyme such as trypsin. This step is necessary
-because the mass spectrometers are more sensitive for peptides, and
-because spectra produced by full-length proteins are difficult to
-interpret. In the next step, the resulting peptides are separated
-according to their hydrophobicity on a liquid chromatography (LC)
-column. As they gradually elute from the column, the peptides are
-ionized via electrospray ionization and subjected to mass spectrometry
-analysis. The result of these measurements consists of a set of
-spectra, which are subsequently used to infer valuable information
-about the proteins present in the initial sample.
+sequence-specific enzyme such as trypsin. In the next step, the
+resulting peptides are separated according to their hydrophobicity on
+a liquid chromatography (LC) column. As they gradually elute from the
+column, the peptides are ionized via electrospray ionization and
+subjected to mass spectrometry analysis. The result of these
+measurements consists of a set of spectra, which are subsequently used
+to infer valuable information about the proteins present in the
+initial sample.
 
-Today a majority of the mass spectrometry (MS) protocols in use are
+Today a majority of the mass spectrometry (MS) protocols in use have a
 high-throughput, generating extensive amounts of data. This has
 brought up a whole new set of analytical challenges, making the
 development of efficient algorithms for data interpretation a major
@@ -388,12 +386,12 @@ involve a considerable number of simplifications.
 \subsection{Machine learning-based methods}
 \label{sec:ML}
 
-In machine learning-based approaches a set of training peptides,
-{\em i.e.} peptide sequences with known retention times, are used to
-customize a predefined mathematical model. This step is typically
-called training or learning. Once trained, the mathematical model can
-be subsequently used to predict retention time for other peptides of
-interest.
+Machine learning-based approaches use a set of training peptides, {\em
+  i.e.} peptide sequences with known retention times, to estimate the
+parameters of a predefined mathematical model. This step is typically
+called fitting, training or learning. Once trained, the mathematical
+model can be subsequently used to predict retention time for other
+peptides of interest.
 
 
 One of the first machine learning approaches for retention time
@@ -465,7 +463,7 @@ observed when comparing retention time of peptides from two technical
 replicates (Figure \ref{fig:repr}). Recently, the lack of suitable
 representations for secondary structure elements was indicated as one
 of the main causes of prediction errors \cite{Reimer2012}.  Most
-probably additional factors are involved, and further endeavors are
+probably additional factors are involved, and further studies are
 required to reach the desired level of accuracy.
 
 \section{\label{sec:rtpredm}Retention time prediction for modified peptides}
@@ -478,12 +476,12 @@ little efforts have been directed toward investigating the
 chromatographic behavior of posttranslationally modified peptides. The
 few studies available so far have mostly focused on phosphorylated
 peptides \cite{Kim2007}, or a couple of artifactual modifications
-commonly introduced during sample
-preparation \cite{Reimer2011}. Consequently, few retention time
-prediction methods have been extended and assessed for such
-peptides. A majority of the approaches currently available are
-modification-specific, many of them developed specifically for
-phosphopeptides \cite{Kawakami2005, perlova2010}.
+commonly introduced during sample preparation
+\cite{Reimer2011}. Consequently, few retention time prediction methods
+have been extended and assessed for such peptides. A majority of the
+approaches currently available are modification-specific, many of them
+developed specifically for phosphopeptides \cite{Kawakami2005,
+  perlova2010}.
 
 \begin{figure}[!h]
 \centering 
