@@ -43,23 +43,19 @@ identifying and quantifying proteins in biological samples
 \cite{Huttlin2010} and elucidating protein interaction networks
 \cite{Gavin2011}.
 
-
 Although available in a variety of flavors, most of the widely spread
 MS-based workflows consists of the same main steps. First, the
 proteins in the mixture of interest are cleaved into peptides using a
-sequence-specific enzyme such as trypsin. This step is necessary
-because the mass spectrometers are more sensitive for peptides, and
-because spectra produced by full-length proteins are difficult to
-interpret. In the next step, the resulting peptides are separated
-according to their hydrophobicity on a liquid chromatography (LC)
-column. As they gradually elute from the column, the peptides are
-ionized via electrospray ionization and subjected to mass spectrometry
-analysis. The result of these measurements consists of a set of
-spectra, which are subsequently used to infer valuable information
-about the proteins present in the initial sample.
+sequence-specific enzyme such as trypsin. In the next step, the
+resulting peptides are separated according to their hydrophobicity on
+a liquid chromatography (LC) column. As they gradually elute from the
+column, the peptides are ionized via electrospray ionization and
+subjected to mass spectrometry analysis. The result of these
+measurements consists of a set of spectra, which are subsequently used
+to infer valuable information about the proteins present in the
+initial sample.
 
-
-Today a majority of the mass spectrometry (MS) protocols in use are
+Today a majority of the mass spectrometry (MS) protocols in use have a
 high-throughput, generating extensive amounts of data. This has
 brought up a whole new set of analytical challenges, making the
 development of efficient algorithms for data interpretation a major
@@ -89,19 +85,97 @@ of both predicted and observed retention times has proven to be a
 powerful feature, with several applications in MS-based proteomics
 \cite{Palmblad2013}.
 
-
 In this review we summarize the work done in the field of retention
 time prediction, and describe a few of the successful applications of
-such predictions. Sections~\ref{sec:rtpred} and \ref{sec:rtpredm}
-describe the main approaches to retention time predictions from
-peptide sequences. Section~\ref{sec:app} discusses some of the most
-important applications of retention time predictions.
+such predictions. Section~\ref{sec:rplc} describes the basics of
+peptide separation using reversed-phase liquid chromatography, while
+Sections~\ref{sec:rtpred} and \ref{sec:rtpredm} summarize the main
+approaches to retention time predictions from peptide
+sequences. Section~\ref{sec:app} discusses some of the most important
+applications of retention time predictions.
 % Section~\ref{sec:irt} briefly introduces the use of peptide retention
 % standards.
 
 
-\section{\label{sec:rtpred}Retention time prediction for unmodified peptides}
+\section{\label{sec:rplc}Basics of peptide separation via reversed-phase liquid chromatography}
+% main idea about RPLC 
 
+At the moment, Reversed-Phase Liquid Chromatography (RPLC) is by far
+the preferred method for separating peptides prior to mass
+spectrometry analysis \cite{Xie201278}. This is mainly because the
+method provides good resolution, gives reproducible results, and most
+of all, is compatible with electrospray ionization. In virtually all
+modern mass spectrometers the RPLC system can be easily connected to
+the ionization source, such that the peptides can be automatically
+transferred to mass spectrometry analysis as they elute from the
+chromatography column.
+
+In RPLC the peptides are separated according to their hydrophobicity
+in a thin tube called chromatographic column. This tube is uniformly
+packed with porous silica beads, such that there is as little
+unoccupied space as possible between the particles. Each of the beads
+contains hydrophobic chains attached. For peptide separation it is
+common to use long alkyl chains such as C8 or C18, although other
+options are also available. The packing of the column is commonly
+denoted as the stationary phase.
+
+Two types of solvents referred to as the mobile phase are used in
+RPLC. By convention, these solvents are denoted A and B. Solvent A
+refers to an aqueous buffer, typically composed of water and 0.1\%
+acid. Solvent B generally consists of a large percentage of organic
+solvent such as acetonitrile and 0.1\% acid. Any RPLC device includes
+a mechanism to pump and mix the two solvents at precise proportions.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[trim=0.5cm 2.8cm 0.5cm 3.5cm, clip=true, width=0.8\textwidth]{img/rplc.pdf}
+\caption{\label{fig:rplc} {\bf Principles of liquid chromatography.}
+  The peptides mixed with mobile phase are injected on the column
+  (Panel A). As an increasing amount of solvent B is mixed in, the
+  peptides are released from the column in order of hydrophobicity
+  (Panels B and C). The signal at the end of the column can be
+  measured at each time point and displayed as a chromatogram (Panel
+  D). Image adapted from www.lamondlab.com.}
+\vspace{-7pt}
+\end{figure}
+
+During separation, the peptide mixture of interest is dissolved in
+solvent A and injected onto the column. As they move through the
+silica beads, peptides with different properties bind to the alkyl
+chains with varying strengths. To release them from the column, an
+increasing amount of solvent B is gradually mixed with buffer A and
+pumped through the column (Figure~\ref{fig:rplc}). Each peptide is
+released at a specific concentration of solvent B, and thus all the
+individual molecules representing a peptide species elute at about the
+same time.  Hence, if measuring the signal at the exit of the column,
+a peak would be observed for each distinct peptide species.
+
+The amount of time that a peptide needs to travel through the column
+is called retention time, shortly $t_R$. One often uses the term
+retention time to refer to the time corresponding to the apex of each
+peptide's elution peak (Figure~\ref{fig:rplc}, Panel D). This time
+point will be proportional to the peptide's ability to lower the
+surface potential between the beads and the solvent, a property that
+we normally refer to as the peptide's hydrophobicity.  Typically, the
+more hydrophobic the peptide, the longer the retention time.
+
+% say something about gradient and washing 
+Since the elution of the peptides is determined by the proportion of
+solvent B present at each time point, the scheme used to add solvent B
+is an essential aspect of any RPLC experiment. Currently, the most
+commonly used approach is based on so-called linear gradients, where
+the increase in solvent B follows a linear function. Most of the
+peptides elute before the percentage of solvent B reaches 40\%, and
+thus gradients often go from 2 to 40\% B. A high increase in
+percentage B at the end of the run ensures that all the remaining
+compounds are washed off from the column.
+
+A great advantage of RPLC is its remarkable versatility. By altering a
+variety of parameters such as column dimensions, the composition of
+stationary and mobile phase, temperature or gradient slope, the method
+can be adapted to separate a variety of compounds.
+
+\section{\label{sec:rtpred}Retention time prediction for unmodified peptides}
 
 Liquid chromatography gives reproducible results. Except for small
 shifts from run to run, the same peptide elutes at about the same time
@@ -120,7 +194,10 @@ However, in practice this is not as straight forward as it might seem, as it for
 \begin{figure}[htbp]
 \centering
 \includegraphics[trim=0.5cm 0cm 2cm 1.5cm, clip=true, width=0.43\textwidth]{img/reproducibility.pdf}
-\caption{\label{fig:repr} {\bf Reproducibility of peptide retention time.} Two identical shotgun proteomics experiments were carried out. The retention times of the peptides confidently identified in both runs are displayed.}
+\caption{\label{fig:repr} {\bf Reproducibility of peptide retention
+    time.} Two identical shotgun proteomics experiments were carried
+  out. The retention times of the peptides confidently identified in
+  both runs are displayed.}
 \end{figure}
 %\vspace{-25pt}
 %\end{wrapfigure}
@@ -130,9 +207,20 @@ Following these observations, a variety of retention time prediction
 methods has been proposed. Most naturally one could divide these
 methods into four classes: look-up tables-based approaches,
 index-based methods, modeling-based methods and machine learning
-techniques. The main ideas underlying each category are described
-below, while Table \ref{tab:rtmethods} lists a few of the most popular
-retention time prediction methods from each category.
+techniques. The main ideas underlying each category are illustrated in
+Figure \ref{fig:methods} , while Table \ref{tab:rtmethods} lists a few
+of the most popular retention time prediction methods from each
+category.
+
+\begin{figure}[!h]
+\centering \includegraphics[clip=true,
+  width=0.8\textwidth]{img/methods.pdf}
+\caption{\label{fig:methods} {\bf Retention time prediction methods.}
+  Each figure illustrates a class of retention time prediction
+  methods. The details of the different methods are described in
+  detail in Section \ref{sec:rtpred}}.
+\vspace{-7pt}
+\end{figure}
 
 \subsection{Methods based on look-ups of previous registered retention times}
 
@@ -200,7 +288,7 @@ predicting the retention time of longer peptides.
  \hline
 SSRCalc & \url{http://hs2.proteome.ca/SSRCalc/SSRCalcX.html} & \cite{Krokhin2004, Krokhin2006}, \cite{Spicer2007} \\
 BioLCCC & \url{http://theorchromo.ru/} & \cite{gorshkov2006} \\
-ANN & Link? & \cite{petritis2003,petritis2006improved} \\
+% ANN & Link? & \cite{petritis2003,petritis2006improved} \\
 RTModel, RTPredict &  \url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
  & \cite{rtpredict, rtpredictImproved} \\
 &\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \\
@@ -299,12 +387,12 @@ involve a considerable number of simplifications.
 \subsection{Machine learning-based methods}
 \label{sec:ML}
 
-In machine learning-based approaches a set of training peptides,
-{\em i.e.} peptide sequences with known retention times, are used to
-customize a predefined mathematical model. This step is typically
-called training or learning. Once trained, the mathematical model can
-be subsequently used to predict retention time for other peptides of
-interest.
+Machine learning-based approaches use a set of training peptides, {\em
+  i.e.} peptide sequences with known retention times, to estimate the
+parameters of a predefined mathematical model. This step is typically
+called fitting, training or learning. Once trained, the mathematical
+model can be subsequently used to predict retention time for other
+peptides of interest.
 
 
 One of the first machine learning approaches for retention time
@@ -355,28 +443,28 @@ little as 50 peptides for training.
 
 
 Moruz {\em et al.} \cite{elude1} developed a software package for
-retention time prediction which we named {\sc Elude}. One of the main
-novelty points of {\sc Elude} was the calculation of peptide features
-based on both a general hydrophobicity index, as well as a retention
-index trained for each dataset at hand. This ensured that the
-algorithm could be applied to different chromatography setups with
-minimal loss in performance. For cases when little training data was
-available, {\sc Elude} implemented an additional workflow based on a
-library of pre-trained retention models. This workflow required only a
-few tens of training peptides to select and calibrate the most
-suitable model from the library. Both the selection and calibration
-were performed using statistical methods robust to outliers.
+retention time prediction named {\sc Elude}. One of the main novelty
+points of {\sc Elude} was the calculation of peptide features based on
+both a general hydrophobicity index, as well as a retention index
+trained for each dataset at hand. This ensured that the algorithm
+could be applied to different chromatography setups with minimal loss
+in performance. For cases when little training data was available,
+{\sc Elude} implemented an additional workflow based on a library of
+pre-trained retention models. This workflow required only a few tens
+of training peptides to select and calibrate the most suitable model
+from the library. Both the selection and calibration were performed
+using statistical methods robust to outliers.
 
 
 
 However, despite all these efforts, it should be pointed out that none
 of the retention time prediction methods currently available is able
-to provide accuracy comparable to the small shifts observed when
-running a sample twice through a chromatography column
-(Figure \ref{fig:repr}). Recently, the lack of suitable
+to provide a prediction precision comparable to the small shifts
+observed when comparing retention time of peptides from two technical
+replicates (Figure \ref{fig:repr}). Recently, the lack of suitable
 representations for secondary structure elements was indicated as one
 of the main causes of prediction errors \cite{Reimer2012}.  Most
-probably additional factors are involved, and further endeavors are
+probably additional factors are involved, and further studies are
 required to reach the desired level of accuracy.
 
 \section{\label{sec:rtpredm}Retention time prediction for modified peptides}
@@ -389,19 +477,18 @@ little efforts have been directed toward investigating the
 chromatographic behavior of posttranslationally modified peptides. The
 few studies available so far have mostly focused on phosphorylated
 peptides \cite{Kim2007}, or a couple of artifactual modifications
-commonly introduced during sample
-preparation \cite{Reimer2011}. Consequently, few retention time
-prediction methods have been extended and assessed for such
-peptides. A majority of the approaches currently available are
-modification-specific, many of them developed specifically for
-phosphopeptides \cite{Kawakami2005, perlova2010}.
+commonly introduced during sample preparation
+\cite{Reimer2011}. Consequently, few retention time prediction methods
+have been extended and assessed for such peptides. A majority of the
+approaches currently available are modification-specific, many of them
+developed specifically for phosphopeptides \cite{Kawakami2005,
+  perlova2010}.
 
 \begin{figure}[!h]
 \centering 
 \includegraphics[width=0.9\textwidth]{img/elude-ptm.pdf}
 \caption{\label{fig:elude} {\bf {\sc Elude}'s workflow.}  {\sc Elude} encompasses two learning steps. In the first one the training peptides are used to build an in-house retention index. This index, together with additional information, is then employed to calculate a set of 60 numerical features for each peptide. These features are optimally combined during a second training procedure. The resulting retention model can be subsequently used to predict the retention time of other peptides of interest.}
 \end{figure}
-
 
 To address this, in Moruz {\em et al.} \cite{elude2} extended the
 first version of their algorithm {\sc ELUDE} to encompass modified
@@ -471,12 +558,12 @@ improve the protein inference in shotgun proteomics \cite{mf}.
 
 
 % how it works and main results
-More specifically, we matched observed masses and retention times of
+More specifically, they matched observed masses and retention times of
 unfragmented ions to predicted masses and retention times for the
-theoretical peptides from an {\it in silico} digest. We built a
+theoretical peptides from an {\it in silico} digest. They built a
 statistical framework to assign protein probabilities based on these
 matches, and combined the results with the ones obtained by the
-typical workflow based on fragmented ions. Following this approach, we
+typical workflow based on fragmented ions. Following this approach, they
 obtained up to 7\% more protein identifications at a fixed false
 discovery rate threshold of 1\% \cite{mf}.
 
@@ -487,11 +574,11 @@ to identify proteins via mass spectrometry. However, when introduced
 in the 90's, mass fingerprinting could not be applied to unequivocally
 identify proteins in complex biological samples. Consequently, shotgun
 proteomics has gained popularity instead. Nevertheless, with great
-developments in instrumentation leading to sub-ppm mass accuracies,
-the possibility of using mass fingerprinting-like methods came back to
-attention~\cite{iamt1}. Our study showed how improved mass accuracies
-and retention time predictions enable the use of unfragmented ions
-even in the context of complex peptide mixtures. 
+developments in instrumentation leading to sub-ppm mass accuracy, the
+possibility of using mass fingerprinting-like methods came back to
+attention~\cite{iamt1}. The mentioned study showed how improved mass
+accuracy and retention time predictions enable the use of unfragmented
+ions even in the context of complex peptide mixtures.
 
 Krokhin {\em et al.} illustrated yet another route to employ retention time
 predictions \cite{krokhin200612, McQueen2012}. They showed that
@@ -501,39 +588,36 @@ instrument can be instructed to avoid fragmenting these peptides, thus
 decreasing the number of fragmentation events that need to be acquired
 for identifying a set of proteins.
 
-
-
 % Improve the design of SRM experiments 
-In addition, predicted retention times are useful investigating
-the elution properties of the peptides.  To illustrate this, we predicted the retention time of all the
-theoretical peptides from an {\it in silico} digest of the human
-proteome using  {\sc Elude}  \cite{elude1}. This exercise revealed a rather skewed
-distribution, with a majority of the peptides eluting in only a small
-portion of the chromatography run. This suggested that
-the linear gradient typically used in liquid chromatography are sub-optimal, and that one should be able to replace such gradients with nonlinear functions that produce even
-distributions of the peptides across runs.
+In addition, predicted retention times are useful investigating the
+elution properties of the peptides.  To illustrate this, in
+\cite{elude1} the retention time of all the theoretical peptides from
+an {\it in silico} digest of the human proteome were predicted using
+{\sc ELUDE}. This exercise revealed a rather skewed distribution, with
+a majority of the peptides eluting in only a small portion of the
+chromatography run. This suggested that the linear gradient typically
+used in liquid chromatography are sub-optimal, and that one should be
+able to replace such gradients with nonlinear functions that produce
+even distributions of the peptides across runs.
 
-
-
-
-We tested this hypothesis by calculating and evaluating
-two types of nonlinear gradients \cite{gradopt1}. Our results showed that the new
+This hypothesis was tested by calculating and evaluating two types of
+nonlinear gradients \cite{gradopt1}. The results showed that the new
 gradients not only provided more uniform distributions of the
 peptides, but also led to an increase in the number of peptide
 identifications. In addition, they facilitated the identification of
-different peptide species compared to the typical linear gradients. To allow the easy calculation of nonlinear gradients by any MS practitioner, we also implemented a user-friendly graphical user interface that can be downloaded free of cost \cite{gradopt2}. 
-Seen from a general perspective, this showed that the gradient function is yet another parameter that researchers can alter
-in their experiments, opening up a whole new range of potential
-applications. 
+different peptide species compared to the typical linear gradients. To
+allow the easy calculation of nonlinear gradients by any MS
+practitioner, a user-friendly graphical user interface was implemented 
+\cite{gradopt2}.  Seen from a general perspective, this showed that
+the gradient function is yet another parameter that researchers can
+alter in their experiments, opening up a whole new range of potential
+applications.
 
-
-
-
-Other examples of applications of retention time predictions include the optimization of  {\em de novo} targeted proteomic
-assays \cite{bertsch2010}, as well as decreasing the
-number of candidate peptides during database
-searching \cite{lobas2013} and accurate simulations of MS-based
-experiments \cite{bielow2011}.
+Other examples of applications of retention time predictions include
+the optimization of {\em de novo} targeted proteomic assays
+\cite{bertsch2010}, as well as decreasing the number of candidate
+peptides during database searching \cite{lobas2013} and accurate
+simulations of MS-based experiments \cite{bielow2011}.
 
 
 %\begin{figure}[!h]
@@ -575,36 +659,38 @@ experiments \cite{bielow2011}.
 
 The accuracy of the machine learning-based methods described in
 section \ref{sec:ML} is still much lower than the methods based on
-look ups of previous registered retention time. However, the large
-availability of datasets leads one to think that there still is a
-possibility to increase the accuracy of such predictions by enhanced
-machinelearning technology.  We can see that there are a number of
-interesting techniques that not yet have been used on the problem of
-predicting peptides retention time. Here we will bring up one such
-techniques, that we feel are particularly good matches, that we have
-not yet seen implemented for the problem. Pairwise Machine-learned
-ranking (MLR) \cite{liu2009learning} models can be trained to
-determine which of two examples that should be better ranked thatn the
-other. MLR is traditionally used for construction of ranking models
-for information retrieval systems. However, in the case of retention
-time prediction we can use such a predictor to predict the elusion
-order for sets of peptides, which can be useful in its own
-\cite{bailey2012instant}, but can also be converted into absolute
-retention times, given that the distribution of their retention times
-are known.
+look-ups of previously registered retention times. However, the large
+availability of datasets suggests that one possibility to increase the
+accuracy of retention time predictions could rely on the use of
+enhanced machine learning methods. Currently, there are a number of
+such techniques that have not yet been applied to the problem of
+predicting peptides' retention time. Here we will bring up one such
+technique called pairwise Machine-Learned Ranking (MLR)
+\cite{liu2009learning}, which we feel is particularly suitable for
+this problem. MLR models can be trained to determine which of two data
+points should be better ranked. 
+
+MLR has traditionally been used for construction of ranking models for
+information retrieval systems. However, in the case of retention time
+prediction, we can use such a predictor to estimate the elution order
+for sets of peptides. While such information can be useful in its own
+\cite{bailey2012instant}, it can also be converted into absolute
+retention times, given that the distribution of the retention times is
+known.
 
 It is also worth noting that the current trend of processing huge data
-repositories, frequently referred to as big data, have put quite some
-intest in so called deep learning techniques such as belief networks
-using restricted multiple layered bolzman machines (RBM)
+repositories, frequently referred to as big data, have brought into
+attention so called deep learning techniques such as belief networks
+using restricted multiple layered Boltzmann machines (RBM)
 \cite{salakhutdinov2009deep} or deep neural networks. This follows the
-observation that ideathe performance of predictors often are enhanced
-if one can structure the prediction into multiple layers. The drawback
-of such models are that they require large training sets. Given the
-very large sets of peptides with retention times that are assembled in
-various repositories, such as Peptide Atlas \cite{desiere2006peptideatlas} and
-PRIDE \cite{martens2005pride}, such methods could probably be
-implemented for retention time prediction as well.
+observation that the performance of predictors is often enhanced if
+one can structure the prediction into multiple layers. The drawback of
+such models are that they require large training sets. Given the very
+large sets of peptides with retention times that are assembled in
+various repositories, such as Peptide Atlas
+\cite{desiere2006peptideatlas} and PRIDE \cite{martens2005pride}, such
+methods could probably be implemented for retention time prediction as
+well.
 
 The available technologies to infer peptides and proteins from mass
 spectrometry data involve predicting the the potential manifestations
@@ -618,22 +704,22 @@ for this review, chromatographic retention
 time \cite{cerqueira2010mude}. 
 
 Moreover, targeted proteomics experiments, such as Selected Reaction
-Monitoring (SRM) experiments, are dependent on the predictability of a
-peptides behavior. In such experiments the retention times and the
-suitable transitions are needed as input for the analysis. Frequently,
+Monitoring (SRM), are dependent on the predictability of a
+peptide's behavior. In such experiments the retention times and the
+suitable transitions are needed as input to the analysis. Frequently,
 such information is derived from previous shotgun analysis. As the
 capacity of targeted proteomics experiments expands by the
 introduction of the more comprehensive data independent acquisition
-techniques techniques \cite{Venable2004} (a.k.a. SWATH analysis), such
+techniques \cite{Venable2004} (a.k.a. SWATH analysis), such
 pre-identification of peptide transitions and retention times
 threatens to become a limiting factor. Our current methods to identify
 peptides from Data Independent Acquisition are only as comprehensive as the previous shotgun
 analysis would be. An attractive alternative is to predict retention
 time and transition using {\em de novo} predictions from the peptides
 amino acid sequences.  Such a system of identifications not dependent
-on previous peptide identifications from shotgun proteomics experiment
+on previous peptide identifications from shotgun proteomics experiments
 would lead to a more direct experimental design and hopefully to more
-comprehensie coverage. Thus {\em de novo} retention time predictions
+comprehensive coverage. Thus {\em de novo} retention time predictions
 have an important role to fill.
 
 % Might be good to add something about that the relatively low
@@ -649,5 +735,11 @@ have an important role to fill.
 %%  LocalWords:  hydrophobicity chromatography elute peptides physico
 %%  LocalWords:  electrospray spectrometry analytical proteomics RPLC
 %%  LocalWords:  posttranslational phosphorylation proteome analytes
-%%  LocalWords:  peptide elutes amino tryptic isoelectric SSRCacls
+%%  LocalWords:  peptide elutes amino tryptic isoelectric SSRCacls et
 %%  LocalWords:  workflows trypsin hydrophobicities chromatographic
+%%  LocalWords:  alkyl peptide's elution SSRCalc BioLCCC RTModel iRT
+%%  LocalWords:  RTPredict Krokhin al QSRR Klammer SVMs SVM Moruz pre
+%%  LocalWords:  dataset workflow outliers posttranslationally silico
+%%  LocalWords:  phosphorylated artifactual phosphopeptides COmbined
+%%  LocalWords:  FRActional DIagonal COFRADIC datasets Palmblad
+%%  LocalWords:  Strittmatter unfragmented
