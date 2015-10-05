@@ -1,4 +1,4 @@
-all: retention.pdf
+all: retention.pdf response.pdf
 
 retention.pdf: img/* retention.bib
 
