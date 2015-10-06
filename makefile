@@ -1,6 +1,11 @@
-all: retention.pdf response.pdf
+all: retention.pdf response.pdf diff.pdf
 
 retention.pdf: img/* retention.bib
+
+
+diff.tex: retention.tex
+	git show v1:$? > /tmp/$?
+	latexdiff /tmp/$? $? > diff.tex
 
 %.png: %.pdf
 	convert -density 144 $*.pdf $*.png
