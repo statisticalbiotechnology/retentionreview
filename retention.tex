@@ -163,7 +163,7 @@ more hydrophobic the peptide, the longer the retention time.
 Since the elution of the peptides is determined by the proportion of
 solvent B present at each time point, the scheme used to add solvent B
 is an essential aspect of any RPLC experiment. Currently, the most
-commonly used approach is based on so-called linear gradients, where
+commonly used approach is based on {\em linear gradients}, where
 the increase in solvent B follows a linear function. Most of the
 peptides elute before the percentage of solvent B reaches 40\%, and
 thus gradients often go from 2 to 40\% B. A high increase in
@@ -187,24 +187,33 @@ themselves. However, the properties of the peptides are determined to
 a large extent by their amino-acid sequence. As a consequence, given a
 chromatography setup, the sequence of a peptide should provide
 virtually all the information needed to predict its retention time.
-However, in practice this is not as straight forward as it might seem, as it for instance is difficult to predict a peptide's three dimensional structure from its amino acid sequence.
 
-%\begin{wrapfigure}{r}{.45\textwidth}
-%\vspace{-10pt}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[trim=0.5cm 0cm 2cm 1.5cm, clip=true, width=0.43\textwidth]{img/reproducibility.pdf}
 \caption{\label{fig:repr} {\bf Reproducibility of peptide retention
     time.} Two identical shotgun proteomics experiments were carried
   out. The retention times of the peptides confidently identified in
-  both runs are displayed.}
+  both runs are displayed. It should be noted that this relatively high reproducibility normally only appears between runs under near to identical experiments, and do not carry over into other experimental conditions or instrumentation.}
 \end{figure}
-%\vspace{-25pt}
-%\end{wrapfigure}
 
-% iRT? \cite{Escher:2012qv}
-Following these observations, a variety of retention time prediction
-methods has been proposed. Most naturally one could divide these
+However, in practice such predictive models is not as straight forward
+as it might seem. For instance, one important part of such a model
+would be the peptides three dimensional conformation. Although the
+current structure prediction methods are quite accurate in predicting
+three dimensional conformation of short amino acid chains, such
+methods will not be equipped with the flexibility to model the various
+conditions of a chromatographic experiment. For instance, many
+peptides are likely changing their confirmation as a function of the
+amount of organic solvent in the mobile phase, an effect that is
+likely to have an important contribution to each peptides retention
+time. Hence, most efforts to predict retention time have moved into
+treating the chromatographic process as a black box, that is a system
+that is only viewed in terms of its inputs an outputs. 
+ 
+  
+Following these observations,a variety of retention time prediction methods has been proposed. Most naturally one could divide these
 methods into four classes: look-up tables-based approaches,
 index-based methods, modeling-based methods and machine learning
 techniques. The main ideas underlying each category are illustrated in
@@ -282,20 +291,19 @@ predicting the retention time of longer peptides.
    give a few of the most commonly used retention time prediction methods available.}
  \vspace{.2cm}
  \label{tab:rtmethods}
- \begin{tabular}{lll}
+ \begin{tabular}{lp{9cm}l}
 
  Method name & Link & References  \\
  \hline
 SSRCalc & \url{http://hs2.proteome.ca/SSRCalc/SSRCalcX.html} & \cite{Krokhin2004, Krokhin2006}, \cite{Spicer2007} \\
 BioLCCC & \url{http://theorchromo.ru/} & \cite{gorshkov2006} \\
 % ANN & Link? & \cite{petritis2003,petritis2006improved} \\
-RTModel, RTPredict &  \url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
+RTPredict &  \url{ http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTPredict.html}, 
  & \cite{rtpredict, rtpredictImproved} \\
-&\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \\
+RTModel &\url{http://ftp.mi.fu-berlin.de/OpenMS/documentation/html/TOPP_RTModel.html}  & \cite{rtpredict, rtpredictImproved} \\
 
 {\sc Elude} & \url{http://elude.sbc.su.se/} & \cite{elude1, elude2} \\
-iRT-calculator & http://www.biognosys.ch/products/irt-calculator.html
-& \cite{irt} \\
+iRT-calculator & \url{http://www.biognosys.ch/products/irt-calculator.html} & \cite{irt} \\
 \hline
  \end{tabular} \\
 \end{table}
@@ -347,7 +355,12 @@ A limitation of index-based methods are that they are optimized for
 predicting retention times for certain chromatography setups. Thus,
 their prediction ability deteriorates for experimental conditions
 diverging from the setup on which the algorithm was optimized
-\cite{Spicer2007}.
+\cite{Spicer2007}. Consequently, more advanced methods such as {\sc
+Elude} \cite{elude1,elude2} estimates retention time indices for each
+dataset as hand. In these cases the indeces are used to generate
+features that are used as an input for final retention time
+estimates. We will come back to this in section \ref{sec:ML}. 
+
 
 % - sum of retention coefficients (Meek reference 22) - different RT
 % coefficients and the observation that this coefficients depend on
@@ -401,11 +414,7 @@ prediction was based on an Artificial Neural Network
 features giving the number of each of the 20 amino acid residues
 present in the sequence. The network was trained using $\sim$7000
 peptides with known retention times and evaluated using a set of
-$\sim$5000 peptides originating from another organism. The algorithm
-reported good accuracy, especially taking into account that it only
-used information about the amino acid composition of the peptides.
-
-
+$\sim$5000 peptides originating from another organism. 
 
 In a follow-up work, the method was extended by representing each
 peptide by 1052 instead of 20 features
@@ -416,9 +425,8 @@ network was trained on more than 300,000 peptide sequences. To obtain
 such a large number of peptides with known retention times, a strategy
 to normalize elution times was developed. This allowed pooling of
 peptides identified in more than 12,000 shotgun experiments. The
-trained algorithm reported excellent performance for the 1303 peptides
-on which it was evaluated.
-
+trained algorithm reported better performance for the 1303 peptides
+on which it was evaluated, than its predecesor.
 
 
 A drawback of the method was however the large amount of training
@@ -426,14 +434,14 @@ peptides required, which made the algorithm difficult to retrain for
 other chromatographic conditions. This was a serious limitation in the
 context of RPLC separation, where a broad variety of chromatographic
 setups is commonly used across research laboratories. To address this,
-Klammer {\em et al.} proposed a predictor based on support vector machines
-(SVMs) \cite{klammer2007improving}. Their method required fewer
-training peptides and could thus be easily adapted to new
-chromatographic conditions, but yielded lower prediction
-accuracy. Subsequently, a more elaborate SVM-based method using a
-customized kernel function was proposed \cite{rtpredict, rtpredictImproved}. This
-approach provided reasonable prediction accuracy, while requiring as
-little as 50 peptides for training.
+Klammer {\em et al.} proposed a predictor based on support vector
+machines (SVMs) \cite{klammer2007improving}. Their method required
+fewer training peptides and could thus be easily adapted to new
+chromatographic conditions, but yielded lower prediction accuracy.
+Subsequently, a more elaborate SVM-based method using a customized
+kernel function was proposed \cite{rtpredict, rtpredictImproved}. This
+approach provided an algorithm that required as little as 50 peptides
+for training.
 
 % Other retention time prediction method used a feature selection
 % approach to select relevant descriptors, and showed good
@@ -455,8 +463,6 @@ of training peptides to select and calibrate the most suitable model
 from the library. Both the selection and calibration were performed
 using statistical methods robust to outliers.
 
-
-
 However, despite all these efforts, it should be pointed out that none
 of the retention time prediction methods currently available is able
 to provide a prediction precision comparable to the small shifts
@@ -465,7 +471,7 @@ replicates (Figure \ref{fig:repr}). Recently, the lack of suitable
 representations for secondary structure elements was indicated as one
 of the main causes of prediction errors \cite{Reimer2012}.  Most
 probably additional factors are involved, and further studies are
-required to reach the desired level of accuracy.
+required to even understand the error sources in the process.
 
 \section{\label{sec:rtpredm}Retention time prediction for modified peptides}
 
@@ -529,19 +535,18 @@ was proven to bring significant improvements in the peptide
 identification process.
 
 
-Palmblad {\em et al.} showed that matching theoretical and observed masses
-and retention times provides a simple, yet powerful method to identify
-peptides in simple biological
-mixtures \cite{palmblad2002prediction}. Strittmatter {\em et al.} used
+Palmblad {\em et al.} showed that matching theoretical and observed
+masses and retention times provides a simple, yet powerful method to
+identify peptides in simple biological mixtures
+\cite{palmblad2002prediction}. Strittmatter {\em et al.} used
 retention time as a parameter in a discriminant function that
-differentiated between correct and incorrect peptide
-identifications \cite{Strittmatter2004}. Following this approach, they
-reported $\sim$9\% more confident peptide identifications in a typical
-shotgun experiment. Along the same lines, Klammer {\em et al.} demonstrated
+differentiated between correct and incorrect peptide identifications
+\cite{Strittmatter2004}. Following this approach, they reported
+$\sim$9\% more confident peptide identifications in a typical shotgun
+experiment. Along the same lines, Klammer {\em et al.} demonstrated
 that for specific experimental conditions, just filtering out peptides
 with large deviations between observed and predicted retention time
-leads to up to 50\% more
-identifications \cite{klammer2007improving}. 
+leads to up to 50\% more identifications \cite{klammer2007improving}. 
 
 
 

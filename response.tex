@@ -21,7 +21,7 @@ We would like to thank the reviewer for the positive feedback. We have revised t
 Additional comments:
 \begin{itemize}
 \item Legend of Figure 2 overlaps with text on page 3
-\item Table 1 is not fully visible; additionally in the table “Elude” is written, while in the text “ELUDE” is used
+\item Table 1 is not fully visible; additionally in the table ``Elude'' is written, while in the text ``ELUDE'' is used
 \end{itemize}
 \ereview
 We have corrected this.
@@ -74,6 +74,119 @@ Thank you for highlighting these typos. We have now corrected them.
 \section*{Reviewer \#2}
 
 \breview
+
+
+The reviewer feels the paper’s target audience isn’t clear. As such,
+the overall sensation is that the paper touches several subjects
+lightly but fails in going in detail into any of them. As it is right
+now, this paper is not practical enough for a mass spectrometrist, and
+not technical enough for a machine learning scientist. The reviewer
+feels it is necessary to define an audience and focus the paper to
+this audience’s expertise.
+
+Specific Comments:
+
+As it was mentioned before, the main concern of the reviewer is the lack of focus in the paper. As such the main point of the review is to clarify who is the audience the paper is meant for and delve deeper into what is relevant for them.
+
+\ereview
+
+We feel that while the reviewer is right in that this manuscript
+targets more than one audience, and that we due to brevity reasons
+have to skip some details. However, we also feel that this is the point of a review, to give an overview for whoever wants to get an introduction to a subject. The details can be found in the publications we refer to. Regardless, we updated the text to better fit into a category of reader that we would define as a mass spectrometrist with a fair understanding of computational methods that is interested in knowing were the field of retention time predictions stands today.  
+
+\breview
+
+
+Other than that, there are some points worth mentioning. They will be here presented in the order they appear on the manuscript.
+
+On section 2, it is written ``so-called linear gradients''. Why say ``so-called''? This expression gives the idea that the gradients in reality are not linear, but this isn’t further developed.
+
+\ereview
+We replaced the word so-called with setting the words linear gradient in italics, to indicate that a explanation of the term will follow. 
+\breview
+
+The reproducibility of RPLC is a big issue. Not only does a column get degraded with use, but there is also documented variability in products from different manufacturers. In this section it is also noted how the retention time depends on several experimental settings – ``variety of parameters such as column dimensions, the composition of stationary and mobile phase, temperature or gradient slope''. So we have several factors independent of the peptide sequence that influence greatly the retention time of a given peptide. In the following section it is said that ``given a chromatography setup, the 
+sequence of a peptide should provide virtually all the information needed to predict its retention time''; however, given that there is so much variability in the chromatography setup in different labs and different experiments, we feel that it should be emphasized how big of an issue this is in retention time prediction and note efforts made in addressing this.
+
+\ereview
+We added a qualifying section to this section
+
+``However, in practice such predictive models is not as straight
+forward as it might seem. For instance, one important part of such a
+model would be the peptides three dimensional conformation. Although
+the current structure prediction methods are quite accurate in
+predicting three dimensional conformation of short amino acid chains,
+such methods will not be equipped with the flexibility to model the
+various conditions of a chromatographic experiment. For instance, many
+peptides are likely changing their confirmation as a function of the
+amount of organic solvent in the mobile phase, an effect that is
+likely to have an important contribution to each peptides retention
+time. Hence, most efforts to predict retention time have moved into
+treating the chromatographic process as a black box, that is a system
+that is only viewed in terms of its inputs an outputs.''
+
+
+\breview
+
+There are some issues with the caption for Fig. 2. It is also not clear if there are points that fall on the regression line. 
+\ereview
+
+We changed the formating of the manuscript so that the caption of Figure2 should stand clear. There is no regression line in Fig. 2.
+
+\breview
+
+Besides, this figure is not representative of a complex sample or of the reproducibility (or variability) in experiments between different labs, or even different machines. As such the figure can be misleading in terms of evaluating the reproducibility of a shotgun proteomics experiment.
+
+\ereview
+
+We added a qualifying sentence to the caption of the Figure: ``It
+should be noted that this relatively high reproducibility normally
+only appears between runs under near to identical experiments, and do
+not carry over into other experimental conditions or instrumentation.''
+
+\breview
+
+Across section 3, there is a lack of evaluation of the prediction methods. In fact at a certain point it is said that one is ``good'', one ``excellent'', and another that has ``lower'' accuracy followed by one that is ``reasonable''. It is inferred that if these qualitative comparisons are made by the authors, then there must be some accuracy measure available. It would be preferable to have a table with these values.
+\ereview
+
+We removed all these rather sloppy unqualified references to methods accuracy.  
+
+\breview
+
+Table 1 falls out of the page.
+\ereview
+We modified the formating of the table.
+\breview
+
+In section 3.1, the last paragraph doesn’t seem relevant to the section it is included in. Maybe it would make more sense to include it in the applications section.
+\ereview
+
+We did not feel that the paragraph sat better in the application section and letted the sentence remain as is.
+
+\breview
+
+In section 3.2, it feels relevant to introduce the approach ELUDE takes regarding retention indexes. Even if they obtained via, are used as features for, a machine learning approach, it is still relevant to this section.
+\ereview
+
+We added a couple of sentences describing this.
+\breview
+
+Section 3.3 is rather brief. The reviewer feels there should be more information on these methods (or none at all).
+\ereview
+\breview
+
+
+On sections 3.1, 3.2 and 3.3 there is no evaluation of any of the introduced methods. In section 3.4 we see the sort of qualitative comparisons mentioned above. We note that there is no mention of how the performance of ELUDE compares to the other methods, even if qualitatively.
+\ereview
+\breview
+
+If the proposed audience to this paper are scientists applying machine learning methods to retention time prediction, more information on the features used and the methods themselves would be relevant. 
+\ereview
+\breview
+
+In the discussion the reviewer feels that it should be discussed not only how retention time prediction can be improved, but also the limitations of how accurate predictions can be, given the issues mentioned above. Another relevant question is how much more relevant do these predictions need be given the applications enumerated in section 5.
+
+
 \ereview
 
 
