@@ -704,9 +704,23 @@ comparing those predicted properties to the observed data. Such
 comparisons are regularly done for discovery proteomics by search
 engines. However, an attractive way to increase the sensitivity of the
 inference procedure is to also predict properties such as their
-iso-electric point~\cite{perez2011silico,branca2014hirief} or of particular interest
-for this review, chromatographic retention
-time \cite{cerqueira2010mude}. 
+iso-electric point~\cite{perez2011silico,branca2014hirief} or of
+particular interest for this review, chromatographic retention time
+\cite{cerqueira2010mude}. One way to determie a predicatble sparation
+techniques usefulness is to estimate its ability to remove candidate
+peptides of any detected feature, normally measured by a false
+positive ratio (FPR), also known as the methods fall-out. Current
+retention time prediction algorithms have an FPR of about
+$\frac{1}{5}$, meaning that it can remove about four out of five
+candidate peptides for a given feature. This could be compared to the
+FPR of about $\frac{1}{200}$ for predictions of high-resolution
+iso-electric focusing experiments~\cite{branca2014hirief}. The
+retention time prediction have toimprove quite a bit to come to level
+with the fall-out of iso-electric focusing, however, almost all mass
+spectrometry-based proteomics use reversed phase chromatography, while
+very few studies are using iso-electric focusing.
+
+% An estimate of a FPR for MS1's would be great here.
 
 Moreover, targeted proteomics experiments, such as Selected Reaction
 Monitoring (SRM), are dependent on the predictability of a
