@@ -336,8 +336,8 @@ peptides \cite{Browne1982, Guo1987, Gilar2010}.
 
 % SSRcalc was proposed including a number of additional terms; then it was extended
 % for a few other column
-Following these observations, Krokhin {\em et al.} developed SSRCalc
-\cite{Krokhin2004}, which is currently the most widely used
+Following these observations, Krokhin {\em et al.} developed {\sc
+SSRCalc} \cite{Krokhin2004}, which is currently the most widely used
 index-based retention time predictor. In the initial version of the
 algorithm a collection of 346 tryptic peptides was used to derive two
 sets of retention coefficients, one corresponding to the N-terminal
@@ -390,12 +390,16 @@ other peptides of interest.
 
 In other modeling-based approaches theoretical models are used to
 capture the chemical behavior of peptides on the chromatography
-column. One such method is BioLCCC, which attempts to model the
-connectivity of the amino acids in a peptide chain and the general
-mechanisms of chromatographic
-separation \cite{gorshkov2006}. Nevertheless, given the numerous
-factors involved in peptide separation, modeling approaches often
-involve a considerable number of simplifications.
+column. One such method is BioLCCC, models the chromatography process
+using a lattice based random walk model for the peptides, which are
+modeled as chains of monomers. The model also includes an entropy and
+energy compensation for the amount of peptides residing on the column 
+and a model of the interaction energies between the peptide and the
+stationary phase. 
+
+Nevertheless, given the numerous factors involved in peptide
+separation, modeling approaches often involve a considerable number of
+simplifications.
  
 \subsection{Machine learning-based methods}
 \label{sec:ML}
@@ -438,36 +442,44 @@ Klammer {\em et al.} proposed a predictor based on support vector
 machines (SVMs) \cite{klammer2007improving}. Their method required
 fewer training peptides and could thus be easily adapted to new
 chromatographic conditions, but yielded lower prediction accuracy.
-Subsequently, a more elaborate SVM-based method using a customized
-kernel function was proposed \cite{rtpredict, rtpredictImproved}. This
-approach provided an algorithm that required as little as 50 peptides
-for training.
+Subsequently, a more elaborate SVM-based method, {\sc RTPredict}, that
+ use a customized kernel function was proposed \cite{rtpredict,
+rtpredictImproved}. This approach provided an algorithm that required
+as little as 50 peptides for training.
 
 % Other retention time prediction method used a feature selection
 % approach to select relevant descriptors, and showed good
 % performances even for longer peptides containing up to 50 amino
 % acids \cite{shinoda2006}.
 
-
-
-Moruz {\em et al.} \cite{elude1} developed a software package for
+Moruz {\em et al.}~\cite{elude1} developed a software package for
 retention time prediction named {\sc Elude}. One of the main novelty
 points of {\sc Elude} was the calculation of peptide features based on
 both a general hydrophobicity index, as well as a retention index
-trained for each dataset at hand. This ensured that the algorithm
-could be applied to different chromatography setups with minimal loss
-in performance. For cases when little training data was available,
-{\sc Elude} implemented an additional workflow based on a library of
+trained for each dataset at hand. The features included properties
+such as average hydrophobicity, the N- and C-termini's hydrophobicity,
+the stretch of the five most and least hydrophobic amino acids,
+helicity, and the number of occurrences of the 25\% most or least
+hydrophobic amino acids. This ensured that the algorithm could be
+applied to different chromatography setups with minimal loss in
+performance. For cases when little training data was available, {\sc
+Elude} implemented an additional workflow based on a library of
 pre-trained retention models. This workflow required only a few tens
 of training peptides to select and calibrate the most suitable model
 from the library. Both the selection and calibration were performed
-using statistical methods robust to outliers.
+using statistical methods robust to outliers. 
 
-However, despite all these efforts, it should be pointed out that none
-of the retention time prediction methods currently available is able
-to provide a prediction precision comparable to the small shifts
-observed when comparing retention time of peptides from two technical
-replicates (Figure \ref{fig:repr}). Recently, the lack of suitable
+
+In a benchmark based on the merit of how large retention time window,
+measured as a fraction of the gradient time was be needed to include
+95\% of the peptides of a series of 14 runs, {\sc Elude} outperformed
+{\sc SSRCalc} and {\sc RTPredict}, needing only on average 22\% as
+compared to 28\% and 26\% respectively~\cite{elude1}. However, despite
+all these efforts, it should be pointed out that none of the retention
+time prediction methods currently available is able to provide a
+prediction precision comparable to the small shifts observed when
+comparing retention time of peptides from two technical replicates
+(Figure \ref{fig:repr}). Recently, the lack of suitable
 representations for secondary structure elements was indicated as one
 of the main causes of prediction errors \cite{Reimer2012}.  Most
 probably additional factors are involved, and further studies are
@@ -723,20 +735,20 @@ very few studies are using iso-electric focusing.
 % An estimate of a FPR for MS1's would be great here.
 
 Moreover, targeted proteomics experiments, such as Selected Reaction
-Monitoring (SRM), are dependent on the predictability of a
-peptide's behavior. In such experiments the retention times and the
-suitable transitions are needed as input to the analysis. Frequently,
-such information is derived from previous shotgun analysis. As the
-capacity of targeted proteomics experiments expands by the
-introduction of the more comprehensive data independent acquisition
-techniques \cite{Venable2004} (a.k.a. SWATH analysis), such
-pre-identification of peptide transitions and retention times
-threatens to become a limiting factor. Our current methods to identify
-peptides from Data Independent Acquisition are only as comprehensive as the previous shotgun
-analysis would be. An attractive alternative is to predict retention
-time and transition using {\em de novo} predictions from the peptides
-amino acid sequences.  Such a system of identifications not dependent
-on previous peptide identifications from shotgun proteomics experiments
+Monitoring (SRM), are dependent on the predictability of a peptide's
+behavior. In such experiments the retention times and the suitable
+transitions are needed as input to the analysis. Frequently, such
+information is derived from previous shotgun analysis. As the capacity
+of targeted proteomics experiments expands by the introduction of the
+more comprehensive data independent acquisition techniques
+\cite{Venable2004} (a.k.a. SWATH analysis), such pre-identification of
+peptide transitions and retention times threatens to become a limiting
+factor. Our current methods to identify peptides from Data Independent
+Acquisition are only as comprehensive as the previous shotgun analysis
+would be. An attractive alternative is to predict retention time and
+transition using {\em de novo} predictions from the peptides amino
+acid sequences.  Such a system of identifications not dependent on
+previous peptide identifications from shotgun proteomics experiments
 would lead to a more direct experimental design and hopefully to more
 comprehensive coverage. Thus {\em de novo} retention time predictions
 have an important role to fill.

@@ -10,11 +10,17 @@
 
 \breview
 
-The authors give a good overview of the existing methods to predict the retention time.  However, the description of the methods is sometimes too brief, and slightly biased towards their own developed methods. Extending the descriptions of the methods that are not developed by the authors should be considered. The applications and discussion section are an added value to the paper.
+The authors give a good overview of the existing methods to predict
+the retention time.  However, the description of the methods is
+sometimes too brief, and slightly biased towards their own developed
+methods. Extending the descriptions of the methods that are not
+developed by the authors should be considered. The applications and
+discussion section are an added value to the paper.
 
 \ereview
 
-We would like to thank the reviewer for the positive feedback. We have revised the sections were the other methods contribution is discussed
+We would like to thank the reviewer for the positive feedback. We have
+revised the sections were the other methods contribution is discussed
 
 
 \breview
@@ -86,30 +92,64 @@ this audience’s expertise.
 
 Specific Comments:
 
-As it was mentioned before, the main concern of the reviewer is the lack of focus in the paper. As such the main point of the review is to clarify who is the audience the paper is meant for and delve deeper into what is relevant for them.
+As it was mentioned before, the main concern of the reviewer is the
+lack of focus in the paper. As such the main point of the review is to
+clarify who is the audience the paper is meant for and delve deeper
+into what is relevant for them.
 
 \ereview
 
 We feel that while the reviewer is right in that this manuscript
 targets more than one audience, and that we due to brevity reasons
-have to skip some details. However, we also feel that this is the point of a review, to give an overview for whoever wants to get an introduction to a subject. The details can be found in the publications we refer to. Regardless, we updated the text to better fit into a category of reader that we would define as a mass spectrometrist with a fair understanding of computational methods that is interested in knowing were the field of retention time predictions stands today.  
+have to skip some details. However, we also feel that this is the
+point of a review, to give an overview for whoever wants to get an
+introduction to a subject. The details can be found in the
+publications we refer to. Regardless, we updated the text to better
+fit into a category of reader that we would define as a mass
+spectrometrist with a fair understanding of computational methods that
+is interested in knowing were the field of retention time predictions
+stands today.  
 
 \breview
 
 
-Other than that, there are some points worth mentioning. They will be here presented in the order they appear on the manuscript.
+Other than that, there are some points worth mentioning. They will be
+here presented in the order they appear on the manuscript.
 
-On section 2, it is written ``so-called linear gradients''. Why say ``so-called''? This expression gives the idea that the gradients in reality are not linear, but this isn’t further developed.
+On section 2, it is written ``so-called linear gradients''. Why say
+``so-called''? This expression gives the idea that the gradients in
+reality are not linear, but this isn’t further developed.
 
 \ereview
-We replaced the word so-called with setting the words linear gradient in italics, to indicate that a explanation of the term will follow. 
+
+This is in part due to the strange nomenclature. In other fields a
+gradient refers to the vector of spacial partial derivates, not a time
+derivate. 
+
+However, to avoid confusion, we replaced the word so-called with
+setting the words linear gradient in italics, to indicate that a
+explanation of the term will follow. 
+
 \breview
 
-The reproducibility of RPLC is a big issue. Not only does a column get degraded with use, but there is also documented variability in products from different manufacturers. In this section it is also noted how the retention time depends on several experimental settings – ``variety of parameters such as column dimensions, the composition of stationary and mobile phase, temperature or gradient slope''. So we have several factors independent of the peptide sequence that influence greatly the retention time of a given peptide. In the following section it is said that ``given a chromatography setup, the 
-sequence of a peptide should provide virtually all the information needed to predict its retention time''; however, given that there is so much variability in the chromatography setup in different labs and different experiments, we feel that it should be emphasized how big of an issue this is in retention time prediction and note efforts made in addressing this.
+The reproducibility of RPLC is a big issue. Not only does a column get
+degraded with use, but there is also documented variability in
+products from different manufacturers. In this section it is also
+noted how the retention time depends on several experimental settings
+– ``variety of parameters such as column dimensions, the composition
+of stationary and mobile phase, temperature or gradient slope''. So we
+have several factors independent of the peptide sequence that
+influence greatly the retention time of a given peptide. In the
+following section it is said that ``given a chromatography setup, the
+sequence of a peptide should provide virtually all the information
+needed to predict its retention time''; however, given that there is
+so much variability in the chromatography setup in different labs and
+different experiments, we feel that it should be emphasized how big of
+an issue this is in retention time prediction and note efforts made in
+addressing this.
 
 \ereview
-We added a qualifying section to this section
+We added a qualifying section to this section.
 
 ``However, in practice such predictive models is not as straight
 forward as it might seem. For instance, one important part of such a
@@ -128,14 +168,21 @@ that is only viewed in terms of its inputs an outputs.''
 
 \breview
 
-There are some issues with the caption for Fig. 2. It is also not clear if there are points that fall on the regression line. 
+There are some issues with the caption for Fig. 2. It is also not
+clear if there are points that fall on the regression line. 
+
 \ereview
 
-We changed the formating of the manuscript so that the caption of Figure2 should stand clear. There is no regression line in Fig. 2.
+We changed the formating of the manuscript so that the caption of
+Figure2 should stand clear. There is no regression line in Fig. 2.
 
 \breview
 
-Besides, this figure is not representative of a complex sample or of the reproducibility (or variability) in experiments between different labs, or even different machines. As such the figure can be misleading in terms of evaluating the reproducibility of a shotgun proteomics experiment.
+Besides, this figure is not representative of a complex sample or of
+the reproducibility (or variability) in experiments between different
+labs, or even different machines. As such the figure can be misleading
+in terms of evaluating the reproducibility of a shotgun proteomics
+experiment.
 
 \ereview
 
@@ -146,10 +193,17 @@ not carry over into other experimental conditions or instrumentation.''
 
 \breview
 
-Across section 3, there is a lack of evaluation of the prediction methods. In fact at a certain point it is said that one is ``good'', one ``excellent'', and another that has ``lower'' accuracy followed by one that is ``reasonable''. It is inferred that if these qualitative comparisons are made by the authors, then there must be some accuracy measure available. It would be preferable to have a table with these values.
+Across section 3, there is a lack of evaluation of the prediction
+methods. In fact at a certain point it is said that one is ``good'',
+one ``excellent'', and another that has ``lower'' accuracy followed by
+one that is ``reasonable''. It is inferred that if these qualitative
+comparisons are made by the authors, then there must be some accuracy
+measure available. It would be preferable to have a table with these
+values. 
+
 \ereview
 
-We removed all these rather sloppy unqualified references to methods accuracy.  
+We removed all these unqualified references to methods accuracy.  
 
 \breview
 
@@ -173,15 +227,30 @@ We added a couple of sentences describing this.
 
 Section 3.3 is rather brief. The reviewer feels there should be more information on these methods (or none at all).
 \ereview
+
+We added some more details on how BioLCCC works to the text.
+
 \breview
 
 
-On sections 3.1, 3.2 and 3.3 there is no evaluation of any of the introduced methods. In section 3.4 we see the sort of qualitative comparisons mentioned above. We note that there is no mention of how the performance of ELUDE compares to the other methods, even if qualitatively.
+On sections 3.1, 3.2 and 3.3 there is no evaluation of any of the
+introduced methods. In section 3.4 we see the sort of qualitative
+comparisons mentioned above. We note that there is no mention of how
+the performance of ELUDE compares to the other methods, even if
+qualitatively.
+
 \ereview
+We added a reference to a benchmark to the section.
 \breview
 
-If the proposed audience to this paper are scientists applying machine learning methods to retention time prediction, more information on the features used and the methods themselves would be relevant. 
+If the proposed audience to this paper are scientists applying machine
+learning methods to retention time prediction, more information on the
+features used and the methods themselves would be relevant. 
+
 \ereview
+
+We included an brief enumeration of some of the features used in Elude.
+
 \breview
 
 In the discussion the reviewer feels that it should be discussed not
@@ -193,10 +262,9 @@ section 5.
 
 \ereview
 
-While it is hard to come up with an estimate of how good estimates
-should be to be usefull, we think it is hard to do. Better is always
-more useful.  Instead we added a comparison of the FPR of retention
-time predictions versus predictions of iso-electric point
-calculations.
+Estimate of how good predictions should be to be useful are generally
+hard to make. Better performance will always be more useful than worse
+performance.  Instead we added a comparison of the FPR of retention
+time predictions versus predictions of iso-electric point calculations.
 
 \end{document}
