@@ -4,9 +4,10 @@
 \usepackage{wrapfig}
 \usepackage{url}
 \usepackage{multirow}
+%\usepackage[nomarkers,figuresonly]{endfloat}
+\usepackage[nomarkers,nolists,noheads]{endfloat}
 
 \title{Peptide retention time prediction} 
-
 
 \author{
 Luminita Moruz\\
@@ -93,6 +94,8 @@ Sections~\ref{sec:rtpred} and \ref{sec:rtpredm} summarize the main
 approaches to retention time predictions from peptide
 sequences. Section~\ref{sec:app} discusses some of the most important
 applications of retention time predictions.
+
+
 % Section~\ref{sec:irt} briefly introduces the use of peptide retention
 % standards.
 
@@ -126,7 +129,7 @@ acid. Solvent B generally consists of a large percentage of organic
 solvent such as acetonitrile and 0.1\% acid. Any RPLC device includes
 a mechanism to pump and mix the two solvents at precise proportions.
 
-\begin{figure}[!h]
+\begin{figure}[p]
 \centering
 \includegraphics[trim=0.5cm 2.8cm 0.5cm 3.5cm, clip=true, width=0.8\textwidth]{img/rplc.pdf}
 \caption{\label{fig:rplc} {\bf Principles of liquid chromatography.}
@@ -189,7 +192,7 @@ chromatography setup, the sequence of a peptide should provide
 virtually all the information needed to predict its retention time.
 
 
-\begin{figure}[htbp]
+\begin{figure}[p]
 \centering
 \includegraphics[trim=0.5cm 0cm 2cm 1.5cm, clip=true, width=0.43\textwidth]{img/reproducibility.pdf}
 \caption{\label{fig:repr} {\bf Reproducibility of peptide retention
@@ -221,7 +224,7 @@ Figure \ref{fig:methods} , while Table \ref{tab:rtmethods} lists a few
 of the most popular retention time prediction methods from each
 category.
 
-\begin{figure}[!h]
+\begin{figure}[p]
 \centering \includegraphics[clip=true,
   width=0.8\textwidth]{img/methods.pdf}
 \caption{\label{fig:methods} {\bf Retention time prediction methods.}
@@ -286,7 +289,7 @@ pointed out that additional parameters would be required for
 predicting the retention time of longer peptides.
 
 
-\begin{table}
+\begin{table}[p]
  \caption{{\bf Retention time prediction methods.} We
    give a few of the most commonly used retention time prediction methods available.}
  \vspace{.2cm}
@@ -357,7 +360,7 @@ their prediction ability deteriorates for experimental conditions
 diverging from the setup on which the algorithm was optimized
 \cite{Spicer2007}. Consequently, more advanced methods such as {\sc
 Elude} \cite{elude1,elude2} estimates retention time indices for each
-dataset as hand. In these cases the indeces are used to generate
+dataset as hand. In these cases the indices are used to generate
 features that are used as an input for final retention time
 estimates. We will come back to this in section \ref{sec:ML}. 
 
@@ -430,7 +433,7 @@ such a large number of peptides with known retention times, a strategy
 to normalize elution times was developed. This allowed pooling of
 peptides identified in more than 12,000 shotgun experiments. The
 trained algorithm reported better performance for the 1303 peptides
-on which it was evaluated, than its predecesor.
+on which it was evaluated, than its predecessor.
 
 
 A drawback of the method was however the large amount of training
@@ -502,7 +505,7 @@ approaches currently available are modification-specific, many of them
 developed specifically for phosphopeptides \cite{Kawakami2005,
   perlova2010}.
 
-\begin{figure}[!h]
+\begin{figure}[p]
 \centering 
 \includegraphics[width=0.9\textwidth]{img/elude-ptm.pdf}
 \caption{\label{fig:elude} {\bf {\sc Elude}'s workflow.}  {\sc Elude} encompasses two learning steps. In the first one the training peptides are used to build an in-house retention index. This index, together with additional information, is then employed to calculate a set of 60 numerical features for each peptide. These features are optimally combined during a second training procedure. The resulting retention model can be subsequently used to predict the retention time of other peptides of interest.}
@@ -716,19 +719,23 @@ comparing those predicted properties to the observed data. Such
 comparisons are regularly done for discovery proteomics by search
 engines. However, an attractive way to increase the sensitivity of the
 inference procedure is to also predict properties such as their
-iso-electric point~\cite{perez2011silico,branca2014hirief} or of
+isoelectric point~\cite{perez2011silico,branca2014hirief} or of
 particular interest for this review, chromatographic retention time
-\cite{cerqueira2010mude}. One way to determie a predicatble sparation
-techniques usefulness is to estimate its ability to remove candidate
-peptides of any detected feature, normally measured by a false
-positive ratio (FPR), also known as the methods fall-out. Current
-retention time prediction algorithms have an FPR of about
-$\frac{1}{5}$, meaning that it can remove about four out of five
-candidate peptides for a given feature. This could be compared to the
-FPR of about $\frac{1}{200}$ for predictions of high-resolution
+\cite{cerqueira2010mude}. 
+
+One way to determine a predictable separation techniques usefulness is
+to estimate its ability to remove candidate peptides of any detected
+feature, normally measured by a false positive ratio (FPR), also known
+as the methods fall-out. The FPR is of course a function of the
+selected thresholds, but if we select a treshold were say $\sim$95\%
+of the known examples get correctly included, what FPR do we find at
+such level?  Current retention time prediction algorithms have an FPR
+of about $\frac{1}{5}$, meaning that it can remove about four out of
+five candidate peptides for a given feature. This could be compared to
+the FPR of about $\frac{1}{200}$ for predictions of high-resolution
 iso-electric focusing experiments~\cite{branca2014hirief}. The
-retention time prediction have toimprove quite a bit to come to level
-with the fall-out of iso-electric focusing, however, almost all mass
+retention time prediction have to improve quite a bit to come to level
+with the fall-out of isoelectric focusing, however, almost all mass
 spectrometry-based proteomics use reversed phase chromatography, while
 very few studies are using iso-electric focusing.
 
@@ -760,7 +767,6 @@ have an important role to fill.
 \bibliographystyle{unsrt}
 \bibliography{./retention.bib}
 
-
 \end{document}
 
 %%  LocalWords:  hydrophobicity chromatography elute peptides physico
@@ -773,4 +779,4 @@ have an important role to fill.
 %%  LocalWords:  dataset workflow outliers posttranslationally silico
 %%  LocalWords:  phosphorylated artifactual phosphopeptides COmbined
 %%  LocalWords:  FRActional DIagonal COFRADIC datasets Palmblad
-%%  LocalWords:  Strittmatter unfragmented
+%%  LocalWords:  Strittmatter unfragmented acetonitrile chromatogram
