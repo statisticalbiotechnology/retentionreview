@@ -4,7 +4,7 @@ retention.pdf: img/* retention.bib
 
 
 diff.tex: retention.tex
-	git show v1:$? > /tmp/$?
+	git show v2:$? > /tmp/$?
 	latexdiff /tmp/$? $? > diff.tex
 
 %.png: %.pdf

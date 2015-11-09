@@ -60,15 +60,15 @@ Today a majority of the mass spectrometry (MS) protocols in use have a
 high-throughput, generating extensive amounts of data. This has
 brought up a whole new set of analytical challenges, making the
 development of efficient algorithms for data interpretation a major
-area within proteomics research. A particular difficult challenge in
+area within proteomics research. A particularly difficult challenge in
 this context is posed by the tremendous complexity of the data.
 Proteins display a wide range of physico-chemical properties and are
 often found at very different amounts in complex samples, spanning as
 much as 12 orders of magnitude in relative abundance~\cite{Angel2012}.
 Furthermore, a large proportion of proteins are subjected to
 posttranslational modifications~\cite{Lemeer2009}. To manage this
-diversity, increasing efforts are made to extract besides the
-fragmentation spectra additional information from each MS experiment.
+diversity, increasing efforts are made to extract additional
+information besides the fragmentation spectra from each MS experiment.
 
 An example of such additional information is represented by retention
 times, {\em i.e.} the time points when peptides elute from the liquid
@@ -201,22 +201,24 @@ virtually all the information needed to predict its retention time.
   both runs are displayed. It should be noted that this relatively high reproducibility normally only appears between runs under near to identical experiments, and do not carry over into other experimental conditions or instrumentation.}
 \end{figure}
 
-However, in practice such predictive models is not as straight forward
-as it might seem. For instance, one important part of such a model
-would be the peptides three dimensional conformation. Although the
-current structure prediction methods are quite accurate in predicting
-three dimensional conformation of short amino acid chains, such
-methods will not be equipped with the flexibility to model the various
-conditions of a chromatographic experiment. For instance, many
-peptides are likely changing their confirmation as a function of the
-amount of organic solvent in the mobile phase, an effect that is
-likely to have an important contribution to each peptides retention
-time. Hence, most efforts to predict retention time have moved into
-treating the chromatographic process as a black box, that is a system
-that is only viewed in terms of its inputs an outputs. 
+However, in practice such predictive models are not as straight
+forward to design as it might seem. For instance, one important part
+of such a model would be the peptides three dimensional
+conformation. Although the current structure prediction methods are
+quite accurate in predicting three dimensional conformation of short
+amino acid chains, such methods will not be equipped with the
+flexibility to model the various conditions of a chromatographic
+experiment. For instance, many peptides are likely changing their
+confirmation as a function of the amount of organic solvent in the
+mobile phase, an effect that is likely to have an important
+contribution to each peptides retention time. Hence, most efforts to
+predict retention time have moved into treating the chromatographic
+process as a black box, that is, a system that is only viewed in terms
+of its inputs and outputs.
  
   
-Following these observations,a variety of retention time prediction methods has been proposed. Most naturally one could divide these
+Following these observations, a variety of retention time prediction
+methods have been proposed. Most naturally one could divide these
 methods into four classes: look-up tables-based approaches,
 index-based methods, modeling-based methods and machine learning
 techniques. The main ideas underlying each category are illustrated in
@@ -359,10 +361,10 @@ predicting retention times for certain chromatography setups. Thus,
 their prediction ability deteriorates for experimental conditions
 diverging from the setup on which the algorithm was optimized
 \cite{Spicer2007}. Consequently, more advanced methods such as {\sc
-Elude} \cite{elude1,elude2} estimates retention time indices for each
+  Elude} \cite{elude1,elude2} estimate retention time indices for each
 dataset as hand. In these cases the indices are used to generate
 features that are used as an input for final retention time
-estimates. We will come back to this in section \ref{sec:ML}. 
+estimates. We will come back to this in section \ref{sec:ML}.
 
 
 % - sum of retention coefficients (Meek reference 22) - different RT
@@ -393,12 +395,12 @@ other peptides of interest.
 
 In other modeling-based approaches theoretical models are used to
 capture the chemical behavior of peptides on the chromatography
-column. One such method is BioLCCC, models the chromatography process
-using a lattice based random walk model for the peptides, which are
-modeled as chains of monomers. The model also includes an entropy and
-energy compensation for the amount of peptides residing on the column 
-and a model of the interaction energies between the peptide and the
-stationary phase. 
+column. One such method is BioLCCC, which models the chromatography
+process using a lattice based random walk model for the peptides. The
+method models peptides as chains of monomers. The model also includes
+an entropy and energy compensation for the amount of peptides residing
+on the column and a model of the interaction energies between the
+peptide and the stationary phase.
 
 Nevertheless, given the numerous factors involved in peptide
 separation, modeling approaches often involve a considerable number of
@@ -446,9 +448,9 @@ machines (SVMs) \cite{klammer2007improving}. Their method required
 fewer training peptides and could thus be easily adapted to new
 chromatographic conditions, but yielded lower prediction accuracy.
 Subsequently, a more elaborate SVM-based method, {\sc RTPredict}, that
- use a customized kernel function was proposed \cite{rtpredict,
-rtpredictImproved}. This approach provided an algorithm that required
-as little as 50 peptides for training.
+uses a customized kernel function was proposed \cite{rtpredict,
+  rtpredictImproved}. This approach provided an algorithm that
+required as little as 50 peptides for training.
 
 % Other retention time prediction method used a feature selection
 % approach to select relevant descriptors, and showed good
@@ -473,20 +475,21 @@ from the library. Both the selection and calibration were performed
 using statistical methods robust to outliers. 
 
 
-In a benchmark based on the merit of how large retention time window,
-measured as a fraction of the gradient time was be needed to include
-95\% of the peptides of a series of 14 runs, {\sc Elude} outperformed
-{\sc SSRCalc} and {\sc RTPredict}, needing only on average 22\% as
-compared to 28\% and 26\% respectively~\cite{elude1}. However, despite
-all these efforts, it should be pointed out that none of the retention
-time prediction methods currently available is able to provide a
-prediction precision comparable to the small shifts observed when
-comparing retention time of peptides from two technical replicates
-(Figure \ref{fig:repr}). Recently, the lack of suitable
-representations for secondary structure elements was indicated as one
-of the main causes of prediction errors \cite{Reimer2012}.  Most
-probably additional factors are involved, and further studies are
-required to even understand the error sources in the process.
+In a benchmark based on the merit of how large the retention time
+window, measured as a fraction of the gradient time was needed to
+include 95\% of the peptides of a series of 14 runs, {\sc Elude}
+outperformed {\sc SSRCalc} and {\sc RTPredict}, needing only on
+average 22\% as compared to 28\% and 26\%
+respectively~\cite{elude1}. However, despite all these efforts, it
+should be pointed out that none of the retention time prediction
+methods currently available is able to provide a prediction precision
+comparable to the small shifts observed when comparing retention time
+of peptides from two technical replicates (Figure
+\ref{fig:repr}). Recently, the lack of suitable representations for
+secondary structure elements was indicated as one of the main causes
+of prediction errors \cite{Reimer2012}.  Most probably additional
+factors are involved, and further studies are required to even
+understand the error sources in the process.
 
 \section{\label{sec:rtpredm}Retention time prediction for modified peptides}
 
@@ -514,8 +517,8 @@ developed specifically for phosphopeptides \cite{Kawakami2005,
 To address this, in Moruz {\em et al.} \cite{elude2} extended the
 first version of their algorithm {\sc ELUDE} to encompass modified
 peptides as well. This was straightforward to achieve once the authors
-observed that many of their predictive features of their method were
-all functions of the peptides amino acid sequence and a retention
+observed that many of the predictive features of their method were all
+functions of the peptide's amino acid sequence and a retention
 index. As such retention indices are estimated for each dataset at
 hand, at the beginning of the training procedure, they can trivially
 be extended beyond the standard amino acids. When the authors used but
@@ -524,11 +527,11 @@ negligible loss in accuracy compared to using all their original
 features for unmodified peptides. Since this index was trained for
 each dataset at hand, the algorithm became fully trainable for any
 modified amino acid (Figure \ref{fig:elude}). The new version of {\sc
-ELUDE} was evaluated on peptides containing artifactual modifications
-introduced as part of an MS protocol called COmbined FRActional
-DIagonal Chromatography (COFRADIC) \cite{Gevaert2002}. The results
-showed that {\sc ELUDE} yielded equally accurate predictions for
-modified and unmodified peptides \cite{elude2}.
+  ELUDE} was evaluated on peptides containing artifactual
+modifications introduced as part of an MS protocol called COmbined
+FRActional DIagonal Chromatography (COFRADIC) \cite{Gevaert2002}. The
+results showed that {\sc ELUDE} yielded equally accurate predictions
+for modified and unmodified peptides \cite{elude2}.
 
 As large-scale studies of a variety of posttranslational modifications
 increasingly come within reach, predictors
@@ -725,16 +728,16 @@ particular interest for this review, chromatographic retention time
 
 One way to determine a predictable separation techniques usefulness is
 to estimate its ability to remove candidate peptides of any detected
-feature, normally measured by a false positive ratio (FPR), also known
-as the methods fall-out. The FPR is of course a function of the
-selected thresholds, but if we select a treshold were say $\sim$95\%
-of the known examples get correctly included, what FPR do we find at
-such level?  Current retention time prediction algorithms have an FPR
-of about $\frac{1}{5}$, meaning that it can remove about four out of
-five candidate peptides for a given feature. This could be compared to
-the FPR of about $\frac{1}{200}$ for predictions of high-resolution
+feature. This can be measured by a false positive ratio (FPR), also
+known as the method's fall-out. The FPR is of course a function of the
+selected thresholds, but if we select a threshold where $\sim$95\% of
+the known examples get correctly included, what FPR do we find at such
+level?  Current retention time prediction algorithms have an FPR of
+about $\frac{1}{5}$, meaning that it can remove about four out of five
+candidate peptides for a given feature. This could be compared to the
+FPR of about $\frac{1}{200}$ for predictions of high-resolution
 iso-electric focusing experiments~\cite{branca2014hirief}. The
-retention time prediction have to improve quite a bit to come to level
+retention time prediction has to improve quite a bit to come to level
 with the fall-out of isoelectric focusing, however, almost all mass
 spectrometry-based proteomics use reversed phase chromatography, while
 very few studies are using iso-electric focusing.
