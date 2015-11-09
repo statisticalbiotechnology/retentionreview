@@ -163,15 +163,14 @@ we normally refer to as the peptide's hydrophobicity.  Typically, the
 more hydrophobic the peptide, the longer the retention time.
 
 % say something about gradient and washing 
-Since the elution of the peptides is determined by the proportion of
-solvent B present at each time point, the scheme used to add solvent B
-is an essential aspect of any RPLC experiment. Currently, the most
-commonly used approach is based on {\em linear gradients}, where
-the increase in solvent B follows a linear function. Most of the
-peptides elute before the percentage of solvent B reaches 40\%, and
-thus gradients often go from 2 to 40\% B. A high increase in
-percentage B at the end of the run ensures that all the remaining
-compounds are washed off from the column.
+Since the proportion of solvent B determines the elution of peptides,
+the scheme used to add solvent B is an essential aspect of any RPLC
+experiment. Currently, the most commonly used approach is based on
+{\em linear gradients}, where the increase in solvent B follows a
+linear function. Most of the peptides elute before the percentage of
+solvent B reaches 40\%, and thus gradients often go from 2 to 40\%
+B. A high increase in percentage B at the end of the run ensures that
+all the remaining compounds are washed off from the column.
 
 A great advantage of RPLC is its remarkable versatility. By altering a
 variety of parameters such as column dimensions, the composition of
@@ -202,10 +201,10 @@ virtually all the information needed to predict its retention time.
 \end{figure}
 
 However, in practice such predictive models are not as straight
-forward to design as it might seem. For instance, one important part
-of such a model would be the peptides three dimensional
+forward to design, as it might seem. For instance, one important part
+of such a model would be the peptides three-dimensional
 conformation. Although the current structure prediction methods are
-quite accurate in predicting three dimensional conformation of short
+quite accurate in predicting three-dimensional conformation of short
 amino acid chains, such methods will not be equipped with the
 flexibility to model the various conditions of a chromatographic
 experiment. For instance, many peptides are likely changing their
@@ -356,7 +355,7 @@ interactions involving helical structures are highly complex, and thus
 more sophisticated models are needed to account for the effects that
 such interactions have on peptide retention time \cite{ah}.
 
-A limitation of index-based methods are that they are optimized for
+A limitation of index-based methods is that they are optimized for
 predicting retention times for certain chromatography setups. Thus,
 their prediction ability deteriorates for experimental conditions
 diverging from the setup on which the algorithm was optimized
@@ -425,17 +424,17 @@ present in the sequence. The network was trained using $\sim$7000
 peptides with known retention times and evaluated using a set of
 $\sim$5000 peptides originating from another organism. 
 
-In a follow-up work, the method was extended by representing each
-peptide by 1052 instead of 20 features
-\cite{petritis2006improved}. The new descriptors encoded the identity
-of each amino acid at each position in a sequence, as well as the
-length and the hydrophobic moment of the peptide. The new neural
-network was trained on more than 300,000 peptide sequences. To obtain
-such a large number of peptides with known retention times, a strategy
-to normalize elution times was developed. This allowed pooling of
-peptides identified in more than 12,000 shotgun experiments. The
-trained algorithm reported better performance for the 1303 peptides
-on which it was evaluated, than its predecessor.
+The method was extended by representing each peptide by 1052 instead
+of 20 features in a follow-up study~\cite{petritis2006improved}. The
+new descriptors encoded the identity of each amino acid at each
+position in a sequence, as well as the length and the hydrophobic
+moment of the peptide. The new neural network was trained on more than
+300,000 peptide sequences. To obtain such a large number of peptides
+with known retention times, a strategy to normalize elution times was
+developed. This allowed pooling of peptides identified in more than
+12,000 shotgun experiments. The trained algorithm reported better
+performance for the 1303 peptides on which it was evaluated, than its
+predecessor.
 
 
 A drawback of the method was however the large amount of training
@@ -498,10 +497,10 @@ understand the error sources in the process.
 The study of peptide separation mechanisms in RPLC has been an active
 area of research for the past 30 years. Nonetheless, surprisingly
 little efforts have been directed toward investigating the
-chromatographic behavior of posttranslationally modified peptides. The
-few studies available so far have mostly focused on phosphorylated
-peptides \cite{Kim2007}, or a couple of artifactual modifications
-commonly introduced during sample preparation
+chromatographic behavior of post-translationally modified
+peptides. The few studies available so far have mostly focused on
+phosphorylated peptides \cite{Kim2007}, or a couple of artifactual
+modifications commonly introduced during sample preparation
 \cite{Reimer2011}. Consequently, few retention time prediction methods
 have been extended and assessed for such peptides. A majority of the
 approaches currently available are modification-specific, many of them
@@ -708,7 +707,7 @@ using restricted multiple layered Boltzmann machines (RBM)
 \cite{salakhutdinov2009deep} or deep neural networks. This follows the
 observation that the performance of predictors is often enhanced if
 one can structure the prediction into multiple layers. The drawback of
-such models are that they require large training sets. Given the very
+such models is that they require large training sets. Given the very
 large sets of peptides with retention times that are assembled in
 various repositories, such as Peptide Atlas
 \cite{desiere2006peptideatlas} and PRIDE \cite{martens2005pride}, such
@@ -726,7 +725,7 @@ isoelectric point~\cite{perez2011silico,branca2014hirief} or of
 particular interest for this review, chromatographic retention time
 \cite{cerqueira2010mude}. 
 
-One way to determine a predictable separation techniques usefulness is
+One way to determine a predictable separation technique's usefulness is
 to estimate its ability to remove candidate peptides of any detected
 feature. This can be measured by a false positive ratio (FPR), also
 known as the method's fall-out. The FPR is of course a function of the
@@ -736,7 +735,7 @@ level?  Current retention time prediction algorithms have an FPR of
 about $\frac{1}{5}$, meaning that it can remove about four out of five
 candidate peptides for a given feature. This could be compared to the
 FPR of about $\frac{1}{200}$ for predictions of high-resolution
-iso-electric focusing experiments~\cite{branca2014hirief}. The
+isoelectric focusing experiments~\cite{branca2014hirief}. The
 retention time prediction has to improve quite a bit to come to level
 with the fall-out of isoelectric focusing, however, almost all mass
 spectrometry-based proteomics use reversed phase chromatography, while
